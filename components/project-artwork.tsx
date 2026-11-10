@@ -1,0 +1,12 @@
+import { Code2, Palette, Film, ArrowUpRight } from 'lucide-react';
+import type { CategoryId } from '@/lib/portfolio';
+
+export function ProjectArtwork({ type, index = 0 }: { type: CategoryId; index?: number }) {
+  if (type === 'programming') return <div className={`project-art code-art variant-${index}`} aria-label="Illustrative software project preview">
+    <div className="browser-window"><div className="browser-toolbar"><i /><i /><i /><span>something-great.dev</span><Code2 size={13} /></div><div className="browser-content"><div className="mock-sidebar"><span className="mock-logo">s.</span><i /><i /><i /><i /><div className="mock-avatar" /></div><div className="mock-dashboard"><div className="mock-greeting">Good things start here.<span>A little clarity for your everyday.</span></div><div className="mock-stats"><div><small>THE BIG PICTURE</small><strong>Make it<br />happen.</strong><div className="mini-spark">↗</div></div><div className="mock-chart"><i /><i /><i /><i /><i /><i /><i /></div></div><div className="mock-lines"><i /><i /><i /></div></div></div></div>
+    <span className="art-sticker"><Code2 size={15} /> Built from an idea</span>
+  </div>;
+  if (type === 'design') return <div className={`project-art design-art variant-${index}`} aria-label="Illustrative design project preview"><div className="design-poster"><div className="poster-top">SLOW DAYS STUDIO <span>EST. WITH INTENTION</span></div><div className="poster-title">Less rush.<br /><em>More wonder.</em></div><div className="poster-flower"><i /><i /><i /><i /><i /><i /><b /></div><div className="poster-bottom">A LITTLE SPACE TO JUST BE. <ArrowUpRight size={24} /></div></div><div className="palette-strip"><i /><i /><i /><i /></div><span className="art-sticker"><Palette size={15} /> A thoughtful little world</span></div>;
+  return <div className={`project-art film-art variant-${index}`} aria-label="Illustrative video project preview"><div className="film-frame"><div className="film-sun" /><div className="film-mountain mountain-back" /><div className="film-mountain mountain-front" /><span className="film-caption">somewhere,<br /><em>in between.</em></span><div className="film-info"><span>AN UNTOLD STORY</span><span>16:9 / VISUAL CONCEPT</span></div></div><div className="film-timeline"><span /><i /><i /><i /><i /><i /><i /><i /></div><span className="art-sticker"><Film size={15} /> Every frame, a feeling</span></div>;
+}
+
