@@ -55,3 +55,13 @@ npm run build
 Browser tests cover actual WebGL rendering, clicking the mesh, continuous travel, arrival, the complete voyage, gallery controls, mobile swipes, contact details, and a missing-WebGL fallback. Windows uses the installed Edge browser; other platforms need a Playwright Chromium browser.
 
 Sites configuration is in `.openai/hosting.json`. Preserve its existing project ID and audience when publishing updates.
+
+## Island navigation and water lettering
+
+The navigation uses four individually rendered 3D island views in one shared WebGL canvas. Hover or focus lifts a miniature, and clicking sails to its matching island. The names are shared in `lib/destinations.ts`:
+
+- **Bytehaven**: programming; a home for bytes and ideas.
+- **Pigment Atoll**: design; colour and form on a creative atoll.
+- **Framewake Bay**: videography; frames that leave a story in their wake.
+
+`lib/water-title.ts` builds the names as extruded TextGeometry with bevels, two lit materials, and shadows on the sea. `components/island-navigation.tsx` and `lib/miniature-harbour.ts` provide the miniature controls and renderer. The bundled Helvetiker font includes its original metadata and license in `lib/fonts/` and needs no runtime download.

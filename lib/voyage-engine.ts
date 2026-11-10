@@ -25,6 +25,7 @@ export function createVoyageEngine(host:HTMLDivElement,callbacks:VoyageCallbacks
   const sea=k.mesh(scene,new T.PlaneGeometry(240,180,1,1),seaMaterial,[25,-.075,-15],[-Math.PI/2,0,0]);sea.castShadow=false;
   const {ship,flag}=createPirateShip();scene.add(ship);ship.rotation.y=.13;
   const islands=ports.slice(1).map((port,i)=>{const island=createIsland(i+1);island.position.set(...port.island);scene.add(island);return island;});
+  let beveledTitleCount=0;scene.traverse(object=>{if(object instanceof T.Mesh&&object.name==='beveled-water-title'&&(object.geometry as T.ExtrudeGeometry).parameters.options.bevelEnabled&&object.castShadow)beveledTitleCount++;});host.dataset.beveledTitles=String(beveledTitleCount);
   const reef=createHomeReef();reef.position.set(-1.8,0,-10.2);reef.scale.setScalar(.75);scene.add(reef);
   const curves=ports.slice(0,-1).map((port,i)=>{
     const a=new T.Vector3(...port.position),b=new T.Vector3(...ports[i+1].position);

@@ -26,7 +26,7 @@ test('clicking the 3D ship sails continuously along the route before opening the
   const screen=await world.evaluate(el=>({x:Number(el.dataset.shipScreenX),y:Number(el.dataset.shipScreenY)}));
   await page.mouse.click(screen.x,screen.y);
   await expect(page.locator('main')).toHaveAttribute('data-traveling','true');
-  await expect(page.getByRole('status')).toContainText('Sailing to Code Cove');
+  await expect(page.getByRole('status')).toContainText('Sailing to Bytehaven');
   await expect(page.locator('.portfolio-dialog')).not.toBeVisible();
   await expect.poll(async()=>Number(await world.getAttribute('data-route'))).toBeGreaterThan(.12);
   const first=await world.evaluate(el=>({route:Number(el.dataset.route),x:Number(el.dataset.shipX),z:Number(el.dataset.shipZ)}));
@@ -37,20 +37,20 @@ test('clicking the 3D ship sails continuously along the route before opening the
   await expect(page.locator('main')).toHaveAttribute('data-current-port','1',{timeout:15000});
   await expect(world).toHaveAttribute('data-ship-x','11.000');
   await expect(page.locator('.portfolio-dialog')).toBeVisible();
-  await expect(page.locator('.dialog-category-nav .selected')).toContainText('Code Cove');
+  await expect(page.locator('.dialog-category-nav .selected')).toContainText('Bytehaven');
 });
 
 test('the journey visits each island in order and returns home',async({page})=>{
   await openWorld(page);
-  await page.getByRole('button',{name:'Sail to Code Cove',exact:true}).click();
+  await page.getByRole('button',{name:'Sail to Bytehaven',exact:true}).click();
   const modal=page.locator('.portfolio-dialog');
   await expect(modal).toBeVisible();
-  await expect(modal.locator('.selected')).toContainText('Code Cove');
+  await expect(modal.locator('.selected')).toContainText('Bytehaven');
   await modal.getByRole('button',{name:'Sail to the next island'}).click();
-  await expect(modal.locator('.selected')).toContainText('Design Island');
+  await expect(modal.locator('.selected')).toContainText('Pigment Atoll');
   await expect(page.locator('main')).toHaveAttribute('data-current-port','2');
   await modal.getByRole('button',{name:'Sail to the next island'}).click();
-  await expect(modal.locator('.selected')).toContainText('Motion Bay');
+  await expect(modal.locator('.selected')).toContainText('Framewake Bay');
   await expect(page.locator('main')).toHaveAttribute('data-current-port','3');
   await modal.getByRole('button',{name:'Sail to the next island'}).click();
   await expect(page.locator('main')).toHaveAttribute('data-current-port','0');
@@ -60,7 +60,7 @@ test('the journey visits each island in order and returns home',async({page})=>{
 
 test('project slides alternate sides, wrap, and support keyboard controls',async({page})=>{
   await openWorld(page);
-  await page.getByRole('button',{name:'Visit Code Cove',exact:true}).click();
+  await page.getByRole('button',{name:'Visit Bytehaven',exact:true}).click();
   const modal=page.locator('.portfolio-dialog');
   await expect(modal).toBeVisible();
   await expect(modal.getByRole('heading')).toHaveText('Ideas, brought to life.');
@@ -87,7 +87,7 @@ test.describe('mobile',()=>{
     const title=await page.getByRole('heading',{level:1}).boundingBox();
     const deckY=Number(await world.getAttribute('data-ship-screen-y'));
     expect(deckY).toBeGreaterThan(title!.y+title!.height);
-    await page.getByRole('button',{name:'Visit Design Island',exact:true}).click();
+    await page.getByRole('button',{name:'Visit Pigment Atoll',exact:true}).click();
     const modal=page.locator('.portfolio-dialog');await expect(modal).toBeVisible();
     await expect(modal.getByRole('heading')).toHaveText('A world of its own.');
     const slide=modal.locator('.project-slide');
@@ -115,8 +115,26 @@ test('the portfolio remains usable when WebGL is unavailable',async({page})=>{
   await page.addInitScript(()=>{const original=HTMLCanvasElement.prototype.getContext;Object.defineProperty(HTMLCanvasElement.prototype,'getContext',{value:function(this:HTMLCanvasElement,type:string,...args:unknown[]){if(type==='webgl'||type==='webgl2'||type==='experimental-webgl')return null;return Reflect.apply(original,this,[type,...args]);}});});
   await page.goto('/',{waitUntil:'networkidle'});
   await expect(page.locator('.world-fallback')).toBeVisible();
-  await page.getByRole('button',{name:'Visit Motion Bay',exact:true}).click();
+  await page.getByRole('button',{name:'Visit Framewake Bay',exact:true}).click();
   await expect(page.locator('main')).toHaveAttribute('data-current-port','3');
   await expect(page.locator('.portfolio-dialog')).toBeVisible();
-  await expect(page.locator('.dialog-category-nav .selected')).toContainText('Motion Bay');
+  await expect(page.locator('.dialog-category-nav .selected')).toContainText('Framewake Bay');
+});
+
+test('3D miniature islands navigate to the matching renamed destination',async({page})=>{
+  const world=await openWorld(page);
+  const miniatures=page.getByTestId('miniature-islands');
+  await expect(miniatures).toHaveAttribute('data-ready','true',{timeout:30000});
+  await expect(miniatures).toHaveAttribute('data-renderer','webgl');
+  await expect(miniatures).toHaveAttribute('data-islands','4');
+  await expect(world).toHaveAttribute('data-beveled-titles','3');
+  for(const [index,name] of [[2,'Pigment Atoll'],[3,'Framewake Bay'],[1,'Bytehaven']] as const){
+    const island=page.getByRole('button',{name:`Visit ${name}`,exact:true});
+    await island.locator('.mini-island-slot').click();
+    await expect(page.locator('main')).toHaveAttribute('data-current-port',String(index));
+    await expect(island).toHaveAttribute('aria-current','step');
+    await expect(page.locator('.portfolio-dialog')).toBeVisible();
+    await expect(page.locator('.dialog-category-nav .selected')).toHaveText(new RegExp(name));
+    await page.getByRole('button',{name:'Close portfolio'}).click();
+  }
 });

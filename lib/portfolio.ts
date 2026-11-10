@@ -24,7 +24,7 @@ export type Category = {
 // Keep null values until your media and links are ready; the page handles them gracefully.
 export const categories: Category[] = [
   {
-    id: 'programming', number: '01', title: 'Built with curiosity.', subtitle: 'Software Engineering', port: 'Code Cove',
+    id: 'programming', number: '01', title: 'Built with curiosity.', subtitle: 'Software Engineering', port: 'Bytehaven',
     description: 'Turning ideas into thoughtful digital experiences. I explore the space between clean code, useful features, and the little details that make a product feel right.',
     projects: [
       { title: 'Ideas, brought to life.', label: 'Web Application', description: 'A space for a future software project. Share the challenge, your approach, and the experience you built. From the first line of code to the final interaction, this is where the story unfolds.', tags: ['Development', 'Web Application', 'Project concept'], media: null, url: null },
@@ -33,7 +33,7 @@ export const categories: Category[] = [
     ],
   },
   {
-    id: 'design', number: '02', title: 'Made to feel different.', subtitle: 'Website & Visual Design', port: 'Design Island',
+    id: 'design', number: '02', title: 'Made to feel different.', subtitle: 'Website & Visual Design', port: 'Pigment Atoll',
     description: 'A good design does more than look beautiful. I bring together soft palettes, clear visual stories, and intuitive interfaces to create experiences with a little personality.',
     projects: [
       { title: 'A world of its own.', label: 'Website Design', description: 'A space for a website with its own personality. Show the visual direction, the interface, and the small decisions that connect a brand to the people who use it.', tags: ['UI / UX', 'Web Design', 'Project concept'], media: null, url: null },
@@ -42,7 +42,7 @@ export const categories: Category[] = [
     ],
   },
   {
-    id: 'videography', number: '03', title: 'Stories, set in motion.', subtitle: 'Videography & Editing', port: 'Motion Bay',
+    id: 'videography', number: '03', title: 'Stories, set in motion.', subtitle: 'Videography & Editing', port: 'Framewake Bay',
     description: 'Some stories are meant to move. Through framing, rhythm, and editing, I explore how everyday moments can become something worth watching, feeling, and remembering.',
     projects: [
       { title: 'Between the moments.', label: 'Visual Story', description: 'A space for a film or video that tells a story. Add your footage, describe the idea behind it, and share how the framing, sound, and edit bring the narrative to life.', tags: ['Videography', 'Storytelling', 'Project concept'], media: null, mediaType: 'video', url: null },

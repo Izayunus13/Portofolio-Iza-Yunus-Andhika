@@ -1,11 +1,13 @@
 ﻿import * as T from 'three';
+import { voyageDestinations } from './destinations';
+import { createWaterTitle } from './water-title';
 import { createKit, colors as C, type Kit, type V3 } from './three-kit';
 
 export const ports = [
-  { name: 'Home waters', position: [0,0,0] as V3, island: [-3,0,-10] as V3 },
-  { name: 'Code Cove', position: [11,0,-3] as V3, island: [16,0,-8] as V3 },
-  { name: 'Design Island', position: [28,0,-13] as V3, island: [33,0,-18] as V3 },
-  { name: 'Motion Bay', position: [45,0,-24] as V3, island: [50,0,-29] as V3 },
+  { name: voyageDestinations[0].name, position: [0,0,0] as V3, island: [-3,0,-10] as V3 },
+  { name: voyageDestinations[1].name, position: [11,0,-3] as V3, island: [16,0,-8] as V3 },
+  { name: voyageDestinations[2].name, position: [28,0,-13] as V3, island: [33,0,-18] as V3 },
+  { name: voyageDestinations[3].name, position: [45,0,-24] as V3, island: [50,0,-29] as V3 },
 ];
 function palm(parent:T.Group,k:Kit,position:V3,scale=1,lean=.35){
   const g=new T.Group();g.position.set(...position);g.scale.setScalar(scale);parent.add(g);
@@ -19,15 +21,6 @@ function palm(parent:T.Group,k:Kit,position:V3,scale=1,lean=.35){
     const geo=new T.BufferGeometry();geo.setAttribute('position',new T.Float32BufferAttribute(vertices,3));geo.computeVertexNormals();const mat=new T.MeshStandardMaterial({color:a<3?'#7eab7d':'#5d916e',side:T.DoubleSide,flatShading:true,roughness:.9});k.mesh(g,geo,mat);
   }
   for(const dx of [-.15,.15])k.sphere(g,.18,[lean*1.6+dx,3.05,.1],C.wood);
-}
-function sign(parent:T.Group,k:Kit,index:number){
-  const g=new T.Group();g.position.set(-.9,.8,2.6);g.rotation.y=.5;parent.add(g);
-  for(const x of [-.85,.85])k.box(g,[.1,1.1,.1],[x,.55,0],C.wood);
-  k.box(g,[2.3,.7,.15],[0,1.16,0],C.darkWood);
-  const canvas=document.createElement('canvas');canvas.width=512;canvas.height=140;const c=canvas.getContext('2d')!;
-  c.fillStyle='#f5ebd2';c.font='600 27px sans-serif';c.textAlign='center';c.fillText(`0${index} / ${ports[index].name.toUpperCase()}`,256,82);
-  const texture=new T.CanvasTexture(canvas);texture.colorSpace=T.SRGBColorSpace;
-  k.mesh(g,new T.PlaneGeometry(2.16,.59),new T.MeshStandardMaterial({map:texture,transparent:true,roughness:1}),[0,1.16,.09]);
 }
 function laptop(parent:T.Group,k:Kit){
   k.box(parent,[2.1,.75,1.6],[0,1.1,.2],C.plank);k.box(parent,[2.15,.1,1.7],[0,1.52,.2],C.lightWood);
@@ -73,7 +66,7 @@ function filmCamera(parent:T.Group,k:Kit){
   for(let x=-.6;x<.8;x+=.4)k.box(board,[.18,.24,.15],[x,1.51+x*.14,.01],C.ink,[0,0,-.3]);
   for(let y=.7;y<1.15;y+=.14)k.box(board,[1.15,.025,.025],[0,y,.06],'#c2cbb5');
 }
-export function createIsland(index:number){
+export function createIsland(index:number,{waterTitle=true}:{waterTitle?:boolean}={}){
   const island=new T.Group();island.name=`island-${index}`;island.userData.port=index;const k=createKit();
   const shape=new T.Shape();const count=15;
   for(let i=0;i<count;i++){const a=i/count*Math.PI*2;const r=1+Math.sin(i*3.7+index)*.08;const x=Math.cos(a)*4.4*r,z=Math.sin(a)*3.4*r;i?shape.lineTo(x,z):shape.moveTo(x,z);}shape.closePath();
@@ -89,7 +82,7 @@ export function createIsland(index:number){
   for(let i=0;i<5;i++)k.sphere(island,.28+ i*.025,[-3.2+i*.34,.84,-.1+Math.sin(i)*.4],'#6d9a77',[1,.8,1]);
   for(const [x,z] of [[2,2.2],[-.3,2.8]]){const star=new T.Shape();for(let i=0;i<10;i++){const a=i*Math.PI/5,r=i%2?.11:.29;i?star.lineTo(Math.cos(a)*r,Math.sin(a)*r):star.moveTo(Math.cos(a)*r,Math.sin(a)*r);}star.closePath();k.mesh(island,new T.ExtrudeGeometry(star,{depth:.05,bevelEnabled:false}),'#d4937b',[x,.72,z],[-Math.PI/2,0,.3]);}
   if(index===1){laptop(island,k);lighthouse(island,k);}else if(index===2)easel(island,k);else filmCamera(island,k);
-  sign(island,k,index);island.traverse(o=>{o.userData.port=index;});
+  if(waterTitle)island.add(createWaterTitle(index));island.traverse(o=>{o.userData.port=index;});
   return island;
 }
 export function createHomeReef(){
