@@ -1,0 +1,115 @@
+/* Double ship doors replace the cargo transition and open into the captain's cabin. */
+.pirate-gate,.gate-canvas,.gate-fallback{position:absolute;inset:0;pointer-events:none}
+.pirate-gate{z-index:40;overflow:hidden;isolation:isolate}
+/* Both door renderers sit in front of the fixed wooden threshold. */
+.gate-canvas,.gate-fallback{z-index:2}
+.gate-fallback{visibility:hidden}
+.pirate-gate[data-renderer='fallback']>.gate-fallback{visibility:visible}
+.voyage-prologue[data-phase='about']>.pirate-gate,.voyage-prologue[data-phase='departing']>.pirate-gate{visibility:hidden}
+.voyage-prologue .summit-opening{z-index:auto}
+.voyage-prologue .summit-brand,.voyage-prologue .summit-signature{z-index:30}
+.voyage-prologue .summit-start{z-index:31}
+.summit-signature{color:#efe3c6;text-shadow:0 2px 5px #211e19,0 0 15px #1c29278c}
+.summit-start-label{padding:11px 18px;gap:12px;border:1px solid #f9f1d4a6;border-radius:50px;background:#ede7d0eb;box-shadow:0 5px 24px #14221c30;text-shadow:none}
+.summit-start-label>i{width:43px;height:43px}
+.summit-start-label>span{font-size:21px}
+.voyage-prologue[data-phase='revealing'] .summit-opening-scene{opacity:1}
+.voyage-prologue > section.prologue-about{transform:none}
+.voyage-prologue[data-phase='idle'] > section.prologue-about,.voyage-prologue[data-phase='welcoming'] > section.prologue-about{opacity:0;transition:none}
+.voyage-prologue[data-phase='revealing'] > section.prologue-about{
+ visibility:visible;transform:none;mask-image:none;opacity:0;animation:none;transition:opacity .18s ease;
+}
+.voyage-prologue[data-phase='revealing'][data-cabin-visible='true'] > section.prologue-about{opacity:1}
+.voyage-prologue[data-phase='revealing'] > section.prologue-about .prologue-portrait-rig .prologue-about-portrait{opacity:1;transform:none;animation:none}
+.voyage-prologue[data-phase='revealing'] > section.prologue-about .prologue-about-copy>*{animation:gate-copy-enter 1.05s cubic-bezier(.22,.7,.25,1) both;animation-delay:calc(2.32s + var(--copy-delay,0s))}
+.voyage-prologue[data-phase='revealing'] > section.prologue-about .prologue-about-mark{animation:gate-copy-enter 1.05s ease 2.8s both}
+@keyframes gate-copy-enter{from{opacity:0;transform:translate3d(0,14px,0)}to{opacity:1;transform:none}}
+
+/* The same sliding and hinged doors remain usable without WebGL. */
+.gate-fallback{perspective:1100px;transform-style:preserve-3d}
+.gate-fallback-leaf{position:absolute;top:-3%;height:106%;width:50.4%;border:12px solid #6f5038;background:
+ repeating-linear-gradient(91deg,transparent 0 2px,#e3dbc00b 3px,transparent 5px 9px,#1028201c 10px 11px),
+ repeating-linear-gradient(90deg,#41665c 0 3px,#34594f 4px 45px,#182c25 46px 48px,#557468 49px 51px,#3b6056 52px 96px,#20382e 97px 99px);
+ box-shadow:inset 0 2px 3px #c6aa75,inset 0 0 0 3px #c7aa67,0 0 0 3px #33271e,0 20px 45px #17242166;backface-visibility:hidden}
+.gate-fallback-left{left:-.3%;transform:translateX(-112%);transform-origin:0 50%}
+.gate-fallback-right{right:-.3%;transform:translateX(112%);transform-origin:100% 50%}
+.gate-fallback-leaf::after{content:'';position:absolute;left:1%;right:1%;top:70%;height:12px;background:linear-gradient(#6c7976,#2c3b3e);border-top:1px solid #b6aa80;border-bottom:2px solid #1c2c30}
+.gate-door-title{position:absolute;left:4%;right:4%;top:5%;font:15px var(--serif);letter-spacing:3px;text-align:center;color:#d6bf89}
+.gate-porthole{position:absolute;width:min(48%,165px);aspect-ratio:1;left:50%;top:17%;translate:-50% 0;border:9px solid #bea268;border-radius:50%;background:linear-gradient(135deg,#6b939d88,#183745 70%);box-shadow:0 0 0 3px #343c39,inset 0 0 15px #0e2432,2px 4px 4px #182d2c80}
+.gate-porthole::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 49%,#b9a674 49% 51%,transparent 51%),linear-gradient(transparent 49%,#b9a674 49% 51%,transparent 51%);border-radius:50%}
+.gate-door-emblem{position:absolute;left:50%;top:48%;translate:-50% 0;width:32%;height:21%;color:#c4ad75;filter:drop-shadow(1px 3px 2px #1e2d27)}
+.gate-door-handle{position:absolute;right:6%;top:51%;width:24px;height:31px;border:4px solid #c9b477;border-radius:45%;box-shadow:0 -11px 0 -2px #25393b}
+.gate-fallback-right .gate-door-handle{right:auto;left:6%}
+.voyage-prologue[data-phase='revealing'] .gate-fallback{animation:fallback-gate-zoom var(--prologue-duration) cubic-bezier(.45,0,.3,1) both}
+.voyage-prologue[data-phase='revealing'] .gate-fallback-left{animation:fallback-door-left var(--prologue-duration) cubic-bezier(.45,0,.3,1) both}
+.voyage-prologue[data-phase='revealing'] .gate-fallback-right{animation:fallback-door-right var(--prologue-duration) cubic-bezier(.45,0,.3,1) both}
+@keyframes fallback-door-left{0%{transform:translateX(-112%) rotateY(0)}31%,40%{transform:translateX(0) rotateY(0)}92%,100%{transform:translateX(0) rotateY(-103deg)}}
+@keyframes fallback-door-right{0%{transform:translateX(112%) rotateY(0)}31%,40%{transform:translateX(0) rotateY(0)}92%,100%{transform:translateX(0) rotateY(103deg)}}
+@keyframes fallback-gate-zoom{0%,40%{transform:scale(1)}92%,100%{transform:scale(2.3)}}
+@media(max-width:700px){
+ .summit-start-label{padding:9px 11px;gap:8px}
+ .summit-start-label>i{width:36px;height:36px}
+ .summit-start-label>span{font-size:17px}
+ .gate-fallback-leaf{border-width:8px}
+ .gate-door-title{font-size:10px;letter-spacing:1px}
+ .gate-porthole{border-width:6px}
+ .gate-door-handle{width:18px;height:25px;border-width:3px}
+}
+@media(prefers-reduced-motion:reduce){
+ .pirate-gate{transition:opacity .12s ease}
+ .voyage-prologue[data-phase='revealing']>.pirate-gate{opacity:0}
+ .voyage-prologue[data-phase='revealing'] > section.prologue-about{opacity:1;transform:none;animation:none!important}
+ .voyage-prologue[data-phase='revealing'] .prologue-about-portrait,.voyage-prologue[data-phase='revealing'] .prologue-about-copy>*,.voyage-prologue[data-phase='revealing'] > section.prologue-about .prologue-about-mark{animation-duration:.12s!important;animation-delay:0s!important}
+ .voyage-prologue[data-phase='revealing'] .gate-fallback,.voyage-prologue[data-phase='revealing'] .gate-fallback-leaf{animation:none}
+}
+
+/* Hold the welcome behind the closing doors until the cabin is fully covered. */
+.voyage-prologue[data-phase='welcoming'] .summit-opening-scene{opacity:1}
+.voyage-prologue[data-phase='welcoming'] > section.summit-opening .summit-welcome{animation:summit-welcome-enter 1.2s cubic-bezier(.22,1,.36,1) .3s both}
+.voyage-prologue[data-phase='revealing'] > section.summit-opening .summit-welcome{opacity:1;transform:none;animation:none}
+.voyage-prologue[data-phase='revealing'][data-cabin-visible='true'] > section.summit-opening .summit-welcome{visibility:hidden;opacity:0}
+@keyframes summit-welcome-enter{
+ from{opacity:0;transform:translate3d(0,14px,0) scale(.985)}
+ to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+@media(prefers-reduced-motion:reduce){
+ .voyage-prologue[data-phase='welcoming'] > section.summit-opening .summit-welcome{opacity:1;animation:none}
+}
+/* The threshold is present from first paint, behind both door renderers. */
+.voyage-prologue{--entry-rail-height:clamp(32px,5.4svh,70px)}
+.gate-entry-threshold{
+ position:absolute;z-index:0;left:0;right:0;bottom:0;height:var(--entry-rail-height);
+ border-top:2px solid #bb8e53;border-bottom:3px solid #241c14;
+ background:linear-gradient(90deg,#291c1480,transparent 18%,#c5965220 48%,transparent 80%,#211b1680),
+  repeating-linear-gradient(1deg,transparent 0 3px,#1c130d26 4px,transparent 5px 9px),
+  linear-gradient(#795033,#493022 28%,#5d3c27 76%,#33241b);
+ box-shadow:inset 0 2px 1px #e1b67d80,inset 0 -4px 6px #160f0b80,0 -5px 12px #25362c30;
+}
+.gate-entry-threshold::before{
+ content:'';position:absolute;left:0;right:0;top:-10px;height:9px;
+ background:linear-gradient(#c29a61,#8f683d 35%,#aa7e48 70%,#6d492b);
+ border-top:1px solid #e3c18b80;box-shadow:0 1px 0 #332217;
+}
+.gate-entry-threshold>i{
+ position:absolute;top:-10px;width:42px;height:9px;transform:skewX(-14deg);
+ border:1px solid #c3a163;background:linear-gradient(110deg,#8a6c35,#d7be7c 45%,#a78b4c);
+ box-shadow:0 1px 1px #302316;
+}
+.gate-entry-threshold>i:first-child{left:10.5%}
+.gate-entry-threshold>i:last-child{right:10.5%}
+.voyage-prologue[data-cabin-visible='true'] .gate-entry-threshold{visibility:hidden}
+.voyage-prologue .summit-signature{bottom:calc(var(--entry-rail-height) + 18px);width:160px}
+.voyage-prologue .summit-start-label{bottom:calc(var(--entry-rail-height) + 16px);width:288px;min-height:68px}
+.voyage-prologue .summit-start-label>span{flex:1;min-width:0}
+@media(max-width:700px){
+ .voyage-prologue .summit-signature{width:110px;max-width:110px}
+ .voyage-prologue .summit-start-label{width:202px;min-height:56px}
+ .gate-entry-threshold>i{width:28px}
+}
+
+/* Release decorative animation work once the doors hide the harbor. */
+.voyage-prologue[data-cabin-visible='true'] .summit-opening *,
+.voyage-prologue[data-phase='about'] .summit-opening *{animation-play-state:paused!important}
+
+/* The closing gates also cover the shared sound control outside the prologue's stacking context. */
+body:has(.voyage-prologue[data-phase='revealing']) .voyage-sound-dock{visibility:hidden;pointer-events:none}

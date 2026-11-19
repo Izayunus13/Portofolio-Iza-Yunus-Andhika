@@ -1,0 +1,71 @@
+{
+  "project": "Nightride with MADENO STUDIOS",
+  "sourceUrl": "https://www.instagram.com/reel/CpfJr5cjiRC/",
+  "publisher": "MADENO / madenostudios",
+  "publicationYear": 2023,
+  "sourceDuration": 127.967,
+  "sourceDimensions": {
+    "width": 720,
+    "height": 720
+  },
+  "videoDimensions": {
+    "width": 720,
+    "height": 320
+  },
+  "creditedRole": {
+    "name": "Iza Yunus Andhika",
+    "role": "Cameraman",
+    "source": "Portfolio owner confirmation"
+  },
+  "studioCredits": {
+    "video": "MADENO STUDIOS",
+    "colourGrading": "MADENO STUDIOS",
+    "source": "Original Instagram caption"
+  },
+  "cover": "/portfolio/madeno-nightride/cover.webp",
+  "coverSourceTime": 0,
+  "encoding": "H.264 yuv420p, AAC, faststart; source picture and soundtrack retained, with brief boundary fades.",
+  "framing": "Original Instagram upload is 720x720; clips remove black padding only using crop=720:320:0:200. No picture stretching or motion reframing.",
+  "clips": [
+    {
+      "id": "01-motorcycle-details",
+      "start": 6,
+      "end": 26,
+      "posterAt": 24,
+      "duration": 20,
+      "media": "/portfolio/madeno-nightride/01-motorcycle-details.mp4",
+      "poster": "/portfolio/madeno-nightride/01-motorcycle-details.webp",
+      "bytes": 1677566
+    },
+    {
+      "id": "02-rider-preparation",
+      "start": 30,
+      "end": 50,
+      "posterAt": 48,
+      "duration": 20,
+      "media": "/portfolio/madeno-nightride/02-rider-preparation.mp4",
+      "poster": "/portfolio/madeno-nightride/02-rider-preparation.webp",
+      "bytes": 2145495
+    },
+    {
+      "id": "03-night-rolling-shots",
+      "start": 62,
+      "end": 82,
+      "posterAt": 72,
+      "duration": 20,
+      "media": "/portfolio/madeno-nightride/03-night-rolling-shots.mp4",
+      "poster": "/portfolio/madeno-nightride/03-night-rolling-shots.webp",
+      "bytes": 2291251
+    },
+    {
+      "id": "04-city-lights",
+      "start": 94,
+      "end": 114,
+      "posterAt": 104,
+      "duration": 20,
+      "media": "/portfolio/madeno-nightride/04-city-lights.mp4",
+      "poster": "/portfolio/madeno-nightride/04-city-lights.webp",
+      "bytes": 2619335
+    }
+  ]
+}

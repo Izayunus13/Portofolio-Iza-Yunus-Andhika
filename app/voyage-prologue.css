@@ -1,0 +1,253 @@
+@font-face{font-family:Ringbearer;src:url('/fonts/ringbearer.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+.voyage-prologue{position:relative;width:100%;height:100svh;min-height:100svh;overflow:hidden;background:#29483e;color:#eef0dc;isolation:isolate}
+.summit-opening{position:absolute;inset:0;z-index:1;overflow:hidden;background:#91aaa1}
+.summit-opening-scene{position:absolute;inset:0;transform:none;transition:opacity 1.4s ease 3.1s}
+.mountain-landscape{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#8eafb3 0%,#c5d0b8 65%,#afc0af 100%)}
+.mountain-landscape>svg{display:block;width:100%;height:100%}
+.mountain-poster,.mountain-poster>img{position:absolute;inset:0;display:block;width:100%;height:100%}.mountain-poster>img{object-fit:cover;object-position:center}
+.mountain-distance-mist{position:absolute;inset:45% 0 0;background:linear-gradient(180deg,transparent,#c7d6c22b 38%,transparent 78%);pointer-events:none}
+.summit-portrait{position:absolute;left:50%;bottom:-3svh;height:68svh;width:max-content;z-index:3;opacity:1;transform:translateX(-50%) scale(1.08);transform-origin:50% 100%;transition:transform 3.2s cubic-bezier(.22,1,.36,1) .15s}
+.summit-portrait>img{display:block;height:100%;width:auto;max-width:none;filter:brightness(0);mask-image:linear-gradient(#000 0%,#000 86%,transparent 100%);transition:filter 2.1s cubic-bezier(.4,0,.2,1) .35s;user-select:none}
+.voyage-prologue .summit-brand{position:absolute;top:34px;left:5%;z-index:4;color:var(--ink);transition:opacity .4s ease}
+.summit-welcome{position:absolute;left:4%;right:4%;top:19svh;z-index:2;text-align:center;opacity:0;pointer-events:none}
+.summit-welcome>p{font-size:10px;letter-spacing:3px;margin-bottom:15px;color:#234b45}
+.summit-welcome h1{font-family:Ringbearer,Georgia,serif;font-size:clamp(76px,13vw,208px);font-weight:400;line-height:1.13;letter-spacing:.015em;color:#193f3b;text-shadow:0 2px 20px #e4d6af40}
+.summit-welcome h1>span{display:block;font-size:.5em;line-height:1.25;margin-bottom:5px}
+.summit-signature{position:absolute;left:5%;bottom:35px;z-index:4;font-size:11px;letter-spacing:2px;line-height:1.8;color:#193d37;text-shadow:0 1px 12px #dae2ce;transition:opacity .3s ease;pointer-events:none}
+.summit-signature>span{display:block;font-size:9px;letter-spacing:1.4px;opacity:.8}
+.summit-start{position:absolute;inset:0;z-index:5;background:none;border:0;border-radius:0;cursor:pointer;padding:0;text-align:left;color:#193d37;touch-action:manipulation}
+.summit-start:focus-visible{outline:3px solid #e8edda;outline-offset:-10px}
+.summit-start:disabled{opacity:1;cursor:default;pointer-events:none}
+.summit-start-label{position:absolute;right:5%;bottom:33px;display:flex;align-items:center;gap:15px;transition:opacity .3s ease;text-shadow:0 1px 12px #dae2ce}
+.summit-start-label>i{display:grid;place-items:center;border:1px solid #3c655788;border-radius:50%;width:52px;height:52px;font-style:normal;transition:transform .3s ease,background .3s ease}
+.summit-start:hover .summit-start-label>i{transform:translate(3px,-3px);background:#ecf1d933}
+.summit-start-label>span{font-family:var(--serif);font-size:23px;line-height:1.3}
+.summit-start-label small{display:block;font-family:var(--sans);font-size:8px;letter-spacing:1.3px;margin-top:5px}
+.voyage-prologue:not([data-phase='idle']) .summit-opening-scene{opacity:.55}
+.voyage-prologue:not([data-phase='idle']) .summit-portrait{transform:translateX(-50%) scale(.95)}
+.voyage-prologue:not([data-phase='idle']) .summit-portrait>img{filter:brightness(1)}
+.voyage-prologue:not([data-phase='idle']) .summit-start-label,.voyage-prologue:not([data-phase='idle']) .summit-signature,.voyage-prologue:not([data-phase='idle']) .summit-brand{opacity:0}
+.voyage-prologue[data-phase='revealing'] .summit-welcome{animation:summit-welcome 3.3s ease .5s both}
+.voyage-prologue[data-phase='about'] .summit-opening,.voyage-prologue[data-phase='departing'] .summit-opening{visibility:hidden}
+.mountain-definitions{position:absolute;overflow:hidden;pointer-events:none}
+/* The prologue shares the exact soft, warm cloud asset with the portfolio opening. */
+.mountain-cloud-bank{position:absolute;pointer-events:none}
+.mountain-cloud-puff{position:absolute;display:block;height:auto;max-width:none;user-select:none;pointer-events:none;filter:drop-shadow(0 12px 15px #365b5b12)}
+.mountain-cloud-bank-floor{left:0;right:0;bottom:-7svh;height:34svh;z-index:4}
+.mountain-cloud-bank-floor .mountain-cloud-puff{animation:summit-cloud-drift 13s ease-in-out infinite alternate}
+.mountain-cloud-bank-floor .mountain-cloud-puff-0{width:73%;left:-23%;top:7%;animation-delay:-4s}
+.mountain-cloud-bank-floor .mountain-cloud-puff-1{width:72%;right:-23%;top:12%;animation-duration:17s;animation-delay:-9s}
+.mountain-cloud-bank-floor .mountain-cloud-puff-2{width:69%;left:16%;top:34%;animation-duration:19s;animation-delay:-11s}
+.mountain-cloud-bank-floor .mountain-cloud-puff-3{width:53%;left:25%;top:62%;animation-duration:15s;animation-delay:-6s}
+/* Wing planes pivot in perspective independently from the bird's flight path. */
+.summit-birds{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;perspective:900px}
+.summit-bird-flight{position:absolute;left:-18%;top:var(--bird-altitude);width:var(--bird-size);height:var(--bird-size);animation:summit-bird-flight var(--bird-flight) linear var(--bird-delay) infinite;will-change:transform}
+.summit-bird-rig{position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:perspective(240px) rotateX(28deg) rotateY(-15deg);filter:drop-shadow(0 3px 2px #1b373626)}
+.summit-wing{position:absolute;left:3%;width:83%;height:58%;overflow:visible;backface-visibility:visible;transform-style:preserve-3d;animation-duration:var(--bird-flap);animation-delay:var(--flap-delay);animation-timing-function:cubic-bezier(.4,0,.5,1);animation-iteration-count:infinite}
+.summit-wing-far{top:-8%;transform-origin:55% 96%;opacity:.85;animation-name:summit-flap-far}
+.summit-wing-near{top:45%;transform-origin:55% 4%;animation-name:summit-flap-near}
+.summit-bird-body{position:absolute;left:0;top:41%;width:100%;height:30%;overflow:visible;transform:translateZ(1px)}
+/* About Me rises over the summit; only its own content can scroll on small screens. */
+.prologue-about{position:absolute;inset:0;z-index:4;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;visibility:hidden;transform:translate3d(0,108%,0) scale(1.025);transform-origin:50% 100%;background:#29483e;scrollbar-width:thin;scrollbar-color:#8fa38a #29483e}
+.prologue-about-atmosphere{position:sticky;top:0;height:100svh;margin-bottom:-100svh;overflow:hidden;pointer-events:none}
+.prologue-about-atmosphere .mountain-landscape{filter:saturate(.8) brightness(.82)}
+.prologue-forest-shade{position:absolute;inset:0;background:linear-gradient(90deg,#173e36ed 0%,#254a3dd9 35%,#284d3d80 63%,#1e423333 100%),linear-gradient(0deg,#1a3b2ecc,transparent 55%)}
+.prologue-about-content{position:relative;min-height:100svh;display:flex;align-items:center;padding:90px 7%;isolation:isolate}
+.prologue-about-portrait{position:absolute;inset:0 -2% 0 auto;width:56%;height:100%;pointer-events:none;opacity:0;transform:translate3d(22vw,5svh,0) scale(1.06);mask-image:linear-gradient(to bottom,#000 0%,#000 40%,#000c 65%,#0005 87%,rgba(0,0,0,.05) 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 40%,#000c 65%,#0005 87%,rgba(0,0,0,.05) 100%)}
+.prologue-about-portrait>img{position:absolute;bottom:-31%;left:50%;transform:translateX(-50%);height:131%;width:auto;max-width:none;object-fit:contain;user-select:none;filter:drop-shadow(-12px 10px 16px #17362b22)}
+.prologue-about-copy{position:relative;z-index:2;max-width:580px;width:50%;padding:30px 0}
+.prologue-about-copy>*{opacity:0;transform:translate3d(-50px,20px,0)}
+.prologue-eyebrow{display:flex;align-items:center;gap:11px;font-size:10px;font-weight:500;letter-spacing:2px;line-height:1.6;color:#c8d5bb;margin-bottom:23px}
+.prologue-eyebrow>span{display:block;width:28px;height:1px;background:#9eae85}
+.prologue-about h2{font-family:var(--serif);font-size:clamp(60px,6.1vw,96px);font-weight:400;line-height:1.03;letter-spacing:-2px;margin:0 0 22px;outline:none;color:#f1edd7}
+.prologue-about h2>em{color:#b7cba5;font-weight:400}
+.prologue-role{display:flex;align-items:center;gap:12px;font-size:14px;line-height:1.6;font-weight:500;margin-bottom:22px;flex-wrap:wrap;color:#e0e3c8}
+.prologue-role>span{color:#b7b18b;font-weight:400}
+.prologue-about-copy>p:not(.prologue-eyebrow):not(.prologue-role){font-size:16px;line-height:1.85;color:#d0dac5;max-width:480px;margin-top:15px}
+.prologue-about-actions{display:flex;align-items:flex-start;flex-direction:column;gap:13px;margin-top:29px}
+.prologue-about-actions>.button{font-size:14px;font-weight:500;min-height:49px;padding:14px 20px;gap:26px;background:#d9dfbd;color:#183c31;border:1px solid #e0e4c166}
+.prologue-about-actions>.button:not(:disabled):hover{background:#e9e7cb}
+.prologue-about-actions>span{font-family:var(--serif);font-style:italic;font-size:16px;color:#aebf9c}
+.prologue-about-mark{position:absolute;right:6%;bottom:38px;font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.5;color:#b3c4a6;z-index:2;opacity:0}
+.voyage-prologue[data-phase='revealing'] .prologue-about{visibility:visible;mask-image:linear-gradient(to bottom,transparent,#000 150px);mask-size:100% calc(100% + 150px);mask-repeat:no-repeat;animation:summit-about-cover 1.25s cubic-bezier(.45,0,.3,1) 3.9s both}
+.voyage-prologue[data-phase='revealing'] .prologue-about-portrait{animation:summit-portrait-enter 1.8s cubic-bezier(.22,.7,.25,1) 5.1s both}
+.voyage-prologue[data-phase='revealing'] .prologue-about-copy>*{animation:summit-copy-enter 1.5s cubic-bezier(.22,.7,.25,1) both;animation-delay:calc(5.35s + var(--copy-delay,0s))}
+.prologue-about-copy>:nth-child(2){--copy-delay:.1s}.prologue-about-copy>:nth-child(3){--copy-delay:.22s}.prologue-about-copy>:nth-child(4){--copy-delay:.32s}.prologue-about-copy>:nth-child(5){--copy-delay:.42s}.prologue-about-copy>:nth-child(6){--copy-delay:.52s}
+.voyage-prologue[data-phase='revealing'] .prologue-about-mark{animation:summit-copy-enter 1.5s ease 5.9s both}
+.voyage-prologue[data-phase='about'] .prologue-about,.voyage-prologue[data-phase='departing'] .prologue-about{visibility:visible;transform:none}
+.voyage-prologue[data-phase='about'] .prologue-about-portrait,.voyage-prologue[data-phase='about'] .prologue-about-copy>*,.voyage-prologue[data-phase='about'] .prologue-about-mark,.voyage-prologue[data-phase='departing'] .prologue-about-portrait,.voyage-prologue[data-phase='departing'] .prologue-about-copy>*,.voyage-prologue[data-phase='departing'] .prologue-about-mark{opacity:1;transform:none}
+.mountain-trees{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.mountain-tree{position:absolute;bottom:-7%;height:auto;transform-origin:50% 96%;animation:summit-tree-sway 8s ease-in-out infinite alternate}
+.mountain-tree-right{right:-8%;width:35%;min-width:310px;max-width:560px;animation-delay:-4s}
+.mountain-tree-left{left:-12%;width:23%;min-width:220px;max-width:350px;opacity:.7;animation-duration:9s;animation-delay:-2s}
+.mountain-tree-distant{right:13%;bottom:-10%;width:17%;min-width:150px;max-width:260px;opacity:.55;animation-duration:11s;animation-delay:-7s}
+.pine-branch{transform-box:fill-box;transform-origin:100% 4%;animation:summit-branch-sway 5.5s ease-in-out var(--branch-delay) infinite alternate}
+/* The cloud banks briefly veil the incoming frame, then open to both sides. */
+.summit-cloud-gate{position:absolute;inset:0;z-index:7;overflow:hidden;pointer-events:none;opacity:0}
+.summit-cloud-gate{--gate-width:max(82vw,76svh)}
+.mountain-cloud-bank-gate-left,.mountain-cloud-bank-gate-right{top:-18%;width:var(--gate-width);height:136%;z-index:1}
+.mountain-cloud-bank-gate-left{left:calc(50% - var(--gate-width)*.9);transform:translateX(-125%)}
+.mountain-cloud-bank-gate-right{right:calc(50% - var(--gate-width)*.9);transform:translateX(125%)}
+.mountain-cloud-bank-gate-left .mountain-cloud-puff,.mountain-cloud-bank-gate-right .mountain-cloud-puff{width:116%;left:-8%}
+.mountain-cloud-bank-gate-right .mountain-cloud-puff{scale:-1 1}
+.mountain-cloud-bank-gate-left .mountain-cloud-puff-0,.mountain-cloud-bank-gate-right .mountain-cloud-puff-0{top:-13%}
+.mountain-cloud-bank-gate-left .mountain-cloud-puff-1,.mountain-cloud-bank-gate-right .mountain-cloud-puff-1{top:13%}
+.mountain-cloud-bank-gate-left .mountain-cloud-puff-2,.mountain-cloud-bank-gate-right .mountain-cloud-puff-2{top:39%}
+.mountain-cloud-bank-gate-left .mountain-cloud-puff-3,.mountain-cloud-bank-gate-right .mountain-cloud-puff-3{top:65%}
+.voyage-prologue[data-phase='revealing'] .summit-cloud-gate{animation:summit-gate-visibility var(--prologue-duration) linear both}
+.voyage-prologue[data-phase='revealing'] .mountain-cloud-bank-gate-left{animation:summit-gate-left var(--prologue-duration) cubic-bezier(.45,0,.55,1) both}
+.voyage-prologue[data-phase='revealing'] .mountain-cloud-bank-gate-right{animation:summit-gate-right var(--prologue-duration) cubic-bezier(.45,0,.55,1) both}
+.prologue-departure{position:absolute;inset:0;z-index:100;background:radial-gradient(ellipse at 45% 30%,#fffffb 0%,#f6f8f1 52%,#e6eee6 100%);opacity:0;pointer-events:none;transition:opacity var(--departure-duration,720ms) cubic-bezier(.4,0,.2,1)}
+.voyage-prologue[data-phase='departing'] .prologue-departure{opacity:1;pointer-events:auto}
+@keyframes summit-welcome{0%{opacity:0;transform:translateY(20px) scale(.92)}25%,65%{opacity:1;transform:scale(1)}100%{opacity:0;transform:translateY(-10px) scale(1.04)}}
+@keyframes summit-about-cover{0%{transform:translate3d(0,108%,0) scale(1.025);mask-position:0 0}85%{transform:translate3d(0,2%,0) scale(1.001);mask-position:0 0}100%{transform:translate3d(0,0,0) scale(1);mask-position:0 -150px}}
+@keyframes summit-portrait-enter{from{opacity:0;transform:translate3d(22vw,5svh,0) scale(1.06)}to{opacity:1;transform:none}}
+@keyframes summit-copy-enter{from{opacity:0;transform:translate3d(-50px,20px,0)}to{opacity:1;transform:none}}
+@keyframes summit-gate-visibility{0%,27.5%{opacity:0}36%,90%{opacity:1}100%{opacity:0}}
+@keyframes summit-gate-left{0%,27.5%{transform:translate3d(-125%,0,0) rotate(-.7deg)}49%,60%{transform:translate3d(0,0,0) rotate(0)}100%{transform:translate3d(-125%,-2%,0) rotate(-.6deg)}}
+@keyframes summit-gate-right{0%,27.5%{transform:translate3d(125%,0,0) rotate(.7deg)}49%,60%{transform:translate3d(0,0,0) rotate(0)}100%{transform:translate3d(125%,2%,0) rotate(.6deg)}}
+@keyframes summit-cloud-drift{from{transform:translate3d(-2%,2%,0)}to{transform:translate3d(3%,-2%,0)}}
+@keyframes summit-bird-flight{0%{transform:translate3d(0,16px,0) rotate(-7deg)}25%{transform:translate3d(37vw,-18px,0) rotate(3deg)}50%{transform:translate3d(74vw,-2px,0) rotate(7deg)}75%{transform:translate3d(111vw,-23px,0) rotate(-3deg)}100%{transform:translate3d(148vw,16px,0) rotate(-7deg)}}
+@keyframes summit-flap-far{0%,100%{transform:rotateX(-8deg)}48%{transform:rotateX(-76deg)}}
+@keyframes summit-flap-near{0%,100%{transform:rotateX(8deg)}48%{transform:rotateX(76deg)}}
+@keyframes summit-tree-sway{from{transform:rotate(-.7deg)}to{transform:rotate(1.1deg)}}
+@keyframes summit-branch-sway{from{transform:rotate(-1.5deg)}to{transform:rotate(2.8deg)}}
+@media(max-width:1050px){.prologue-about-content{padding-left:6%;padding-right:6%}.prologue-about-copy{width:52%}.prologue-about h2{font-size:clamp(57px,7vw,80px)}.prologue-about-portrait{right:-9%;width:61%}}
+@media(max-width:700px){
+ .voyage-prologue .summit-brand{top:26px;left:7%}
+ .mountain-landscape-summit>svg{width:calc(100% + 150px);max-width:none;transform:translateX(-150px)}
+ .summit-portrait{height:65svh;bottom:-2svh}.summit-welcome{top:26svh}.summit-welcome>p{font-size:7px;letter-spacing:1.6px;margin-bottom:12px}.summit-welcome h1{font-size:clamp(44px,13.5vw,94px)}
+ .summit-signature{left:7%;bottom:27px;font-size:9px;letter-spacing:1.2px;max-width:41%}.summit-signature>span{font-size:7px;letter-spacing:.8px}.summit-start-label{right:7%;bottom:26px;gap:9px}.summit-start-label>i{width:41px;height:41px}.summit-start-label>span{font-size:19px}.summit-start-label small{display:none}
+ .mountain-cloud-bank-floor{height:25svh;bottom:-2svh}.mountain-cloud-bank-floor .mountain-cloud-puff-0{width:115%;left:-66%;top:0}.mountain-cloud-bank-floor .mountain-cloud-puff-1{width:115%;right:-63%;top:6%}.mountain-cloud-bank-floor .mountain-cloud-puff-2{width:111%;left:-3%;top:38%}.mountain-cloud-bank-floor .mountain-cloud-puff-3{width:90%;left:4%;top:64%}
+ .summit-bird-flight{width:calc(var(--bird-size)*.8);height:calc(var(--bird-size)*.8);left:-25%}
+ .prologue-about-content{display:flex;flex-direction:column;align-items:stretch;padding:0 7% 45px;min-height:100svh}
+ .prologue-about-portrait{position:relative;inset:auto;align-self:center;width:116%;height:47svh;min-height:310px;flex-shrink:0;margin:0 -8%;mask-image:linear-gradient(to bottom,#000 0%,#000 40%,#000a 69%,rgba(0,0,0,.05) 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 40%,#000a 69%,rgba(0,0,0,.05) 100%)}
+ .prologue-about-portrait>img{height:153%;bottom:-53%}.prologue-about-copy{width:100%;max-width:none;padding:8px 0 0;align-self:stretch}.prologue-eyebrow{font-size:8px;letter-spacing:1.3px;gap:9px;margin-bottom:18px}.prologue-about h2{font-size:clamp(49px,12vw,72px);line-height:1.04;letter-spacing:-1.7px;margin-bottom:18px}.prologue-role{font-size:12px;gap:8px;margin-bottom:18px}.prologue-about-copy>p:not(.prologue-eyebrow):not(.prologue-role){font-size:14px;line-height:1.8;margin-top:13px;max-width:none}.prologue-about-actions{margin-top:24px;gap:12px}.prologue-about-actions>.button{font-size:13px;min-height:49px}.prologue-about-mark{display:none}
+ .prologue-forest-shade{background:linear-gradient(180deg,#234c3633,#1e44399c 38%,#173c33ed 60%,#173c33f5)}
+ .mountain-tree-right{right:-39%;width:75%;bottom:-2%}.mountain-tree-left{left:-48%;width:61%;bottom:5%}.mountain-tree-distant{right:-8%;width:39%;bottom:2%}
+}
+@media(max-height:700px) and (min-width:701px){.summit-welcome{top:15svh}.summit-welcome h1{font-size:clamp(76px,17svh,150px)}.summit-portrait{height:68svh}.prologue-about-content{padding-top:48px;padding-bottom:48px}.prologue-about h2{font-size:60px}.prologue-eyebrow{margin-bottom:16px}.prologue-about-copy>p:not(.prologue-eyebrow):not(.prologue-role){font-size:14px;line-height:1.7}}
+@media(prefers-reduced-motion:reduce){
+ .summit-bird-flight,.summit-wing,.mountain-cloud-puff,.mountain-tree,.pine-branch{animation:none!important;will-change:auto}
+ .summit-bird-flight{transform:translateX(48vw)}.summit-bird-flight:nth-of-type(3){transform:translateX(85vw)}.summit-bird-flight:nth-of-type(4){transform:translateX(112vw)}
+ .summit-opening-scene,.summit-portrait,.summit-portrait>img,.summit-brand,.summit-signature,.summit-start-label,.prologue-departure{transition-duration:.1s!important;transition-delay:0s!important}
+ .voyage-prologue[data-phase='revealing'] .prologue-about,.voyage-prologue[data-phase='revealing'] .prologue-about-portrait,.voyage-prologue[data-phase='revealing'] .prologue-about-copy>*,.voyage-prologue[data-phase='revealing'] .prologue-about-mark{animation-duration:.1s!important;animation-delay:0s!important}
+ .voyage-prologue[data-phase='revealing'] .summit-cloud-gate,.voyage-prologue[data-phase='revealing'] .mountain-cloud-bank-gate-left,.voyage-prologue[data-phase='revealing'] .mountain-cloud-bank-gate-right,.voyage-prologue[data-phase='revealing'] .summit-welcome{animation:none!important}
+}
+
+.summit-cloud-mist{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 40% 42%,#f7f3e2f5,#e3eadedb 45%,#bbd0c08a 80%);pointer-events:none}
+.voyage-prologue[data-phase='revealing'] .summit-cloud-mist{animation:summit-mist-open var(--prologue-duration) ease both}
+@keyframes summit-mist-open{0%,35%{opacity:0}49%,60%{opacity:1}90%,100%{opacity:0}}
+.mountain-trees-summit{z-index:1}
+.mountain-trees-summit .mountain-tree-left{left:-8%;bottom:-12%;width:25%;min-width:230px;opacity:.9}
+.mountain-trees-summit .mountain-tree-right{right:-6%;bottom:-10%;width:23%;min-width:220px;opacity:.85}
+.mountain-trees-summit .mountain-tree-distant{right:8%;bottom:9%;width:12%;min-width:105px;opacity:.55}
+@media(max-width:700px){.mountain-trees-summit .mountain-tree-left{left:-41%;bottom:-7%;width:72%;min-width:180px}.mountain-trees-summit .mountain-tree-right{right:-33%;bottom:-6%;width:60%;min-width:170px}.mountain-trees-summit .mountain-tree-distant{right:-8%;bottom:13%;width:29%;min-width:95px}}
+@media(prefers-reduced-motion:reduce){.voyage-prologue[data-phase='revealing'] .summit-cloud-mist{animation:none!important}}
+
+/* Reveal the 3D landscape directly; vector scenery appears only when WebGL fails. */
+.mountain-environment{position:absolute;inset:0;z-index:1;opacity:0;background:linear-gradient(180deg,#8eafb3 0%,#c5d0b8 65%,#afc0af 100%)}
+.mountain-landscape[data-renderer='webgl']>.mountain-environment{opacity:1}
+.summit-opening-scene:not(:has(.mountain-landscape[data-renderer='fallback']))>.mountain-trees,.prologue-about-atmosphere:not(:has(.mountain-landscape[data-renderer='fallback']))>.mountain-trees{display:none}
+.summit-cloud-mist{z-index:0}
+.summit-white-fade{position:absolute;inset:0;z-index:3;opacity:0;background:radial-gradient(ellipse at 48% 40%,#fffffc,#f5f5ec 67%,#e9efe4);pointer-events:none}
+.voyage-prologue[data-phase='revealing'] .summit-white-fade{animation:summit-white-fade var(--prologue-duration) ease-in-out both}
+@keyframes summit-white-fade{0%,42.5%{opacity:0}51%,60%{opacity:.97}78%,100%{opacity:0}}
+/* A brighter forest palette continues the morning sky; the portrait has its own frame. */
+.prologue-about{background:#9faf97;color:#1f4038}
+.prologue-about-atmosphere .mountain-landscape{filter:saturate(.85) brightness(1.04)}
+.prologue-forest-shade{background:linear-gradient(90deg,#c1cdb1eb 0%,#bbc9afdb 34%,#b1c2aa66 67%,#abc0a22b),linear-gradient(0deg,#92a98cc2,transparent 70%)}
+.prologue-about-content{gap:7%;padding-right:7%;}
+.prologue-about-copy{width:49%;max-width:570px;order:0}
+.prologue-about-portrait{position:relative;inset:auto;order:1;width:36%;max-width:420px;height:auto;flex:0 0 36%;padding:12px 12px 0;margin:0 0 0 auto;background:#e3e6d1;border:1px solid #f2efda99;border-radius:12px;box-shadow:0 24px 60px #23463833,0 4px 12px #2346381a;mask-image:none;-webkit-mask-image:none;transform:translate3d(22vw,3svh,0) rotate(3deg);}
+.prologue-portrait-window{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:6px;background:radial-gradient(ellipse at 45% 26%,#edf0d9,#c4d2b5 60%,#8fae94)}
+.prologue-about-portrait .prologue-portrait-window>img{position:absolute;inset:0;width:100%;height:100%;max-width:100%;object-fit:cover;object-position:50% 0;transform:none;filter:none}
+.prologue-about-portrait figcaption{padding:16px 9px 18px;color:#315548;font-size:9px;letter-spacing:2px;line-height:1.6;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.prologue-about-portrait figcaption small{font-family:var(--serif);font-style:italic;font-size:13px;letter-spacing:0;color:#5b745b}
+.prologue-about h2{color:#20453c}.prologue-about h2>em{color:#567b58}.prologue-eyebrow{color:#3d644d}.prologue-role{color:#284f40}.prologue-about-copy>p:not(.prologue-eyebrow):not(.prologue-role){color:#2c4e3d}.prologue-role>span{color:#7d7655}.prologue-about-actions>span,.prologue-about-mark{color:#4c6f50}.prologue-about-actions>.button{background:#294e3e;color:#f0eed6;border-color:#294e3e}.prologue-about-actions>.button:not(:disabled):hover{background:#355e48}
+@media(max-width:1050px){.prologue-about-content{gap:5%}.prologue-about-copy{width:51%}.prologue-about-portrait{width:39%;flex-basis:39%;right:auto}}
+@media(max-width:700px){.prologue-about-content{padding:24px 7% 45px;gap:23px;align-items:stretch}.prologue-about-portrait{order:0;width:72%;max-width:300px;min-height:0;height:auto;flex:0 0 auto;margin:0 auto;padding:8px 8px 0;align-self:center;mask-image:none;-webkit-mask-image:none}.prologue-about-copy{order:1;width:100%;padding:0}.prologue-about-portrait figcaption{padding:10px 3px 12px;font-size:7px;letter-spacing:1.2px;gap:2px}.prologue-about-portrait figcaption small{font-size:11px}.prologue-forest-shade{background:linear-gradient(180deg,#b0c2aa66,#b6c8aad9 42%,#afc2a2ed 75%,#9cb58ff5)}}
+@media(prefers-reduced-motion:reduce){.mountain-environment,.mountain-landscape>svg{transition:none}.voyage-prologue[data-phase='revealing'] .summit-white-fade{animation:none!important}}
+
+/* The silhouette is present from the first paint, before the live harbor takes over. */
+.voyage-prologue[data-summit-ready='true'] .summit-portrait{opacity:1;animation:none}
+@keyframes summit-silhouette-in{from{opacity:0}to{opacity:1}}
+/* Reuse the foreground's transparent cloud texture at different depths and scales. */
+.mountain-cloud-bank-background{inset:0;z-index:1}
+.mountain-cloud-bank-background .mountain-cloud-puff{--cloud-travel-x:clamp(22px,3.8vw,60px);--cloud-travel-y:clamp(18px,3.2svh,38px);opacity:var(--cloud-opacity);animation:summit-cloud-float 32s cubic-bezier(.45,0,.55,1) infinite;filter:none}
+.mountain-cloud-bank-background .mountain-cloud-puff-0{--cloud-opacity:.32;width:48%;left:-17%;top:36%;scale:-1 1;animation-delay:-8s}
+.mountain-cloud-bank-background .mountain-cloud-puff-1{--cloud-opacity:.38;--cloud-travel-x:clamp(-66px,-4.2vw,-24px);--cloud-travel-y:clamp(22px,4svh,46px);width:43%;right:-14%;top:44%;animation-duration:39s;animation-delay:-17s}
+.mountain-cloud-bank-background .mountain-cloud-puff-2{--cloud-opacity:.22;--cloud-travel-x:clamp(16px,2.6vw,42px);--cloud-travel-y:clamp(-32px,-2.8svh,-16px);width:42%;left:4%;top:63%;animation-duration:43s;animation-delay:-23s}
+.mountain-cloud-bank-background .mountain-cloud-puff-3{--cloud-opacity:.28;--cloud-travel-x:clamp(-48px,-3.2vw,-20px);--cloud-travel-y:clamp(20px,3.6svh,42px);width:39%;right:10%;top:67%;scale:-1 1;animation-duration:35s;animation-delay:-11s}
+/* A closed, gently changing path avoids a rigid left-right ping-pong or a loop seam. */
+@keyframes summit-cloud-float{
+ 0%,100%{transform:translate3d(calc(var(--cloud-travel-x)*-.5),calc(var(--cloud-travel-y)*.2),0) rotate(-.25deg) scale(1);opacity:var(--cloud-opacity)}
+ 18%{transform:translate3d(calc(var(--cloud-travel-x)*-.1),calc(var(--cloud-travel-y)*-.65),0) rotate(.05deg) scale(1.012);opacity:calc(var(--cloud-opacity)*.9)}
+ 39%{transform:translate3d(calc(var(--cloud-travel-x)*.65),calc(var(--cloud-travel-y)*-.2),0) rotate(.3deg) scale(1.025);opacity:calc(var(--cloud-opacity)*.82)}
+ 61%{transform:translate3d(calc(var(--cloud-travel-x)*.45),calc(var(--cloud-travel-y)*.75),0) rotate(.12deg) scale(1.015);opacity:calc(var(--cloud-opacity)*.88)}
+ 82%{transform:translate3d(calc(var(--cloud-travel-x)*-.35),calc(var(--cloud-travel-y)*.5),0) rotate(-.18deg) scale(1.005);opacity:calc(var(--cloud-opacity)*.96)}
+}
+@media(max-width:700px){
+ .mountain-cloud-bank-background .mountain-cloud-puff-0{width:95%;left:-54%;top:40%}
+ .mountain-cloud-bank-background .mountain-cloud-puff-1{width:88%;right:-48%;top:48%}
+ .mountain-cloud-bank-background .mountain-cloud-puff-2{width:92%;left:-34%;top:66%}
+ .mountain-cloud-bank-background .mountain-cloud-puff-3{width:84%;right:-24%;top:72%}
+}
+@media(prefers-reduced-motion:reduce){
+ .voyage-prologue[data-summit-ready='true'] .summit-portrait{animation:none;opacity:1}
+}
+
+/* Keep the first mountain frame beneath the canvas until its first render has settled. */
+.mountain-landscape-summit>.mountain-environment{transition:opacity .5s ease}
+.mountain-landscape-summit[data-renderer='webgl']>.mountain-poster{visibility:hidden;transition:visibility 0s .55s}
+.mountain-landscape-summit[data-renderer='fallback']>.mountain-poster{visibility:hidden}
+/* Wide shadow echoes converge smoothly; the central silhouette stays steady. */
+.summit-portrait{isolation:isolate;--ninja-spread:clamp(70px,13vw,190px)}
+.summit-portrait>img{position:relative;z-index:1}
+.summit-portrait::before,.summit-portrait::after{content:none;position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;background:#173b36;mask:url('/images/prologue/iza-red-cutout.webp') center/100% 100% no-repeat;filter:blur(3px)}
+.summit-portrait::after{background:#102e2c}
+.voyage-prologue[data-summit-ready='true'][data-phase='idle'] .summit-portrait::before{animation:summit-ninja-left 2.2s cubic-bezier(.22,.61,.36,1) .7s both}
+.voyage-prologue[data-summit-ready='true'][data-phase='idle'] .summit-portrait::after{animation:summit-ninja-right 2.2s cubic-bezier(.22,.61,.36,1) .7s both}
+@keyframes summit-ninja-left{
+ 0%{opacity:0;transform:translate3d(calc(var(--ninja-spread)*-1),8px,0)}
+ 24%{opacity:.46}
+ 58%{opacity:.24}
+ 100%{opacity:0;transform:translate3d(0,0,0)}
+}
+@keyframes summit-ninja-right{
+ 0%{opacity:0;transform:translate3d(var(--ninja-spread),-6px,0)}
+ 28%{opacity:.4}
+ 62%{opacity:.2}
+ 100%{opacity:0;transform:translate3d(0,0,0)}
+}
+@media(prefers-reduced-motion:reduce){
+ .mountain-landscape-summit>.mountain-environment,.mountain-landscape-summit[data-renderer='webgl']>.mountain-poster{transition:none}
+ .voyage-prologue[data-summit-ready='true'][data-phase='idle'] .summit-portrait::before,.voyage-prologue[data-summit-ready='true'][data-phase='idle'] .summit-portrait::after{animation:none;opacity:0}
+}
+
+/* Give About Me a closer composition at normal desktop browser zoom. */
+@media(min-width:1051px){
+ .prologue-about-content{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);max-width:1440px;margin-inline:auto;padding:clamp(56px,7svh,96px) clamp(40px,6vw,96px);gap:clamp(48px,6vw,96px)}
+ .prologue-about-copy{width:100%;max-width:none;padding:0}
+ .prologue-about-portrait{width:100%;max-width:460px;flex:none;margin:0;justify-self:end}
+ .prologue-about h2{font-size:clamp(82px,7.8vw,132px);line-height:1.02;letter-spacing:-2.8px;margin-bottom:28px}
+ .prologue-about .prologue-eyebrow{font-size:12px;letter-spacing:2.1px;margin-bottom:28px}
+ .prologue-about .prologue-role{font-size:clamp(17px,1.2vw,21px);gap:15px;margin-bottom:25px}
+ .prologue-about-copy>p:not(.prologue-eyebrow):not(.prologue-role){font-size:clamp(18px,1.22vw,22px);line-height:1.75;max-width:640px;margin-top:20px}
+ .prologue-about-actions{gap:17px;margin-top:34px}
+ .prologue-about-actions>.button{font-size:17px;min-height:58px;padding:17px 25px;gap:30px}
+ .prologue-about-actions>span{font-size:20px}
+ .prologue-about-portrait figcaption{font-size:10px;padding:18px 10px 20px}
+ .prologue-about-portrait figcaption small{font-size:15px}
+}
+@media(min-width:1051px) and (max-height:850px){
+ .prologue-about-content{padding-block:40px;gap:48px}
+ .prologue-about h2{font-size:clamp(68px,10.8svh,92px);margin-bottom:20px}
+ .prologue-about .prologue-eyebrow{font-size:10px;margin-bottom:18px}
+ .prologue-about .prologue-role{font-size:16px;margin-bottom:18px}
+ .prologue-about-copy>p:not(.prologue-eyebrow):not(.prologue-role){font-size:17px;line-height:1.65;margin-top:14px}
+ .prologue-about-actions{gap:12px;margin-top:24px}
+ .prologue-about-actions>.button{font-size:15px;min-height:50px;padding:14px 22px}
+ .prologue-about-actions>span{font-size:17px}
+ .prologue-about-portrait{max-width:390px}
+}

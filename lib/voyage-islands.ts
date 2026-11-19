@@ -1,14 +1,8 @@
 ﻿import * as T from 'three';
-import { voyageDestinations } from './destinations';
 import { createWaterTitle } from './water-title';
+import { createIslandSandGeometry } from './island-shore';
 import { createKit, colors as C, type Kit, type V3 } from './three-kit';
-
-export const ports = [
-  { name: voyageDestinations[0].name, position: [0,0,0] as V3, island: [-3,0,-10] as V3 },
-  { name: voyageDestinations[1].name, position: [11,0,-3] as V3, island: [16,0,-8] as V3 },
-  { name: voyageDestinations[2].name, position: [28,0,-13] as V3, island: [33,0,-18] as V3 },
-  { name: voyageDestinations[3].name, position: [45,0,-24] as V3, island: [50,0,-29] as V3 },
-];
+export { ports } from './voyage-routes';
 function palm(parent:T.Group,k:Kit,position:V3,scale=1,lean=.35){
   const g=new T.Group();g.position.set(...position);g.scale.setScalar(scale);parent.add(g);
   const trunk=new T.CatmullRomCurve3([new T.Vector3(0,0,0),new T.Vector3(lean,.9,.05),new T.Vector3(lean*.3,2,.12),new T.Vector3(lean*1.6,3.1,0)]);
@@ -51,9 +45,9 @@ function easel(parent:T.Group,k:Kit){
   const hill=k.sphere(g,.9,[-.25,1.12,.13],'#6e9980',[1,.6,.04]);hill.castShadow=false;
   const hill2=k.sphere(g,.7,[.55,.98,.17],'#446c64',[1.1,.7,.04]);hill2.castShadow=false;
   // Large painter's palette on the sand, with raised paint dabs.
-  const palette=k.sphere(parent,1.04,[-2,1.05,1],C.lightWood,[1.1,.12,.72]);palette.rotation.y=-.4;
-  ['#c87564','#e3bc63','#6f9b80','#7ea4b1','#c7a5b5'].forEach((color,i)=>{const a=i*.7-1.5;k.sphere(parent,.17,[-2+Math.cos(a)*.72,1.19,1+Math.sin(a)*.44],color,[1,.4,1]);});
-  k.rope(parent,[[-2.7,1.05,.7],[-2.3,1.5,.4],[-2,2,.2]],C.wood,.05);k.sphere(parent,.1,[-2,2,.2],'#678e77',[.6,1.8,.6]);
+  const palette=k.sphere(parent,1.04,[-2.1,1.05,.45],C.lightWood,[1.1,.12,.72]);palette.rotation.y=-.4;
+  ['#c87564','#e3bc63','#6f9b80','#7ea4b1','#c7a5b5'].forEach((color,i)=>{const a=i*.7-1.5;k.sphere(parent,.17,[-2.1+Math.cos(a)*.72,1.19,.45+Math.sin(a)*.44],color,[1,.4,1]);});
+  k.rope(parent,[[-2.8,1.05,.15],[-2.4,1.5,-.15],[-2.1,2,-.35]],C.wood,.05);k.sphere(parent,.1,[-2.1,2,-.35],'#678e77',[.6,1.8,.6]);
 }
 function filmCamera(parent:T.Group,k:Kit){
   const g=new T.Group();g.position.set(.1,.7,0);g.rotation.y=.35;parent.add(g);
@@ -61,26 +55,29 @@ function filmCamera(parent:T.Group,k:Kit){
   k.box(g,[1.6,.95,.7],[0,2.1,0],C.ink);k.cylinder(g,.32,.65,[.95,2.1,0],'#526b70',[0,0,Math.PI/2]);
   k.cylinder(g,.23,.03,[1.3,2.1,0],'#132c36',[0,0,Math.PI/2]);k.ring(g,.31,.055,[1.32,2.1,0],C.gold,[0,Math.PI/2,0]);
   for(const x of [-.45,.4]){k.cylinder(g,.46,.14,[x,2.92,0],'#829a96',[Math.PI/2,0,0]);k.ring(g,.45,.04,[x,2.92,.09],C.gold);for(let a=0;a<Math.PI*2;a+=Math.PI/3)k.cylinder(g,.09,.03,[x+Math.cos(a)*.26,2.92+Math.sin(a)*.26,.1],C.ink,[Math.PI/2,0,0]);}
-  const board=new T.Group();board.position.set(-1.8,.4,1.6);board.rotation.y=.3;parent.add(board);
+  const board=new T.Group();board.position.set(-1.8,.4,1.0);board.rotation.y=.3;parent.add(board);
   k.box(board,[1.5,.9,.1],[0,.9,0],C.ink);k.box(board,[1.6,.24,.14],[0,1.51,0],C.ivory,[0,0,.14]);
   for(let x=-.6;x<.8;x+=.4)k.box(board,[.18,.24,.15],[x,1.51+x*.14,.01],C.ink,[0,0,-.3]);
   for(let y=.7;y<1.15;y+=.14)k.box(board,[1.15,.025,.025],[0,y,.06],'#c2cbb5');
 }
 export function createIsland(index:number,{waterTitle=true}:{waterTitle?:boolean}={}){
   const island=new T.Group();island.name=`island-${index}`;island.userData.port=index;const k=createKit();
-  const shape=new T.Shape();const count=15;
-  for(let i=0;i<count;i++){const a=i/count*Math.PI*2;const r=1+Math.sin(i*3.7+index)*.08;const x=Math.cos(a)*4.4*r,z=Math.sin(a)*3.4*r;i?shape.lineTo(x,z):shape.moveTo(x,z);}shape.closePath();
-  k.mesh(island,new T.ExtrudeGeometry(shape,{depth:.6,bevelEnabled:true,bevelSegments:2,bevelSize:.22,bevelThickness:.15,steps:1}),'#e7d4a3',[0,.05,0],[-Math.PI/2,0,0]);
+  k.mesh(island,createIslandSandGeometry(index),'#e7d4a3',[0,.05,0],[-Math.PI/2,0,0]);
   const grass=k.cylinder(island,2.7,.14,[.1,.78,-.4],'#9ab58b');grass.scale.z=.8;
   for(let i=0;i<12;i++){const a=i/12*Math.PI*2;k.sphere(island,.45+Math.sin(i*2)*.14,[Math.cos(a)*4.05,.04,Math.sin(a)*3.12],'#a1aaa0',[1,.8,1]);}
   const shelf=k.mesh(island,new T.CircleGeometry(5.6,48),new T.MeshBasicMaterial({color:'#b6e1cb',transparent:true,opacity:.24,depthWrite:false}),[0,-.025,0],[-Math.PI/2,0,0]);shelf.scale.y=.82;shelf.castShadow=false;shelf.receiveShadow=false;
   const surf=k.mesh(island,new T.RingGeometry(4.5,4.57,48),new T.MeshBasicMaterial({color:'#edf8e9',transparent:true,opacity:.6,side:T.DoubleSide,depthWrite:false}),[0,.025,0],[-Math.PI/2,0,0]);surf.scale.y=.81;surf.castShadow=false;
   // The jetty extends into the arrival water.
   for(let z=2.5;z<5.6;z+=.27)k.box(island,[1.5,.12,.23],[-2.65,.54,z],z%1>.5?C.plank:C.lightWood);
-  for(const x of [-3.35,-1.95])for(const z of [2.7,4.8]){k.cylinder(island,.085,1.2,[x,.4,z],C.wood);k.ring(island,.1,.02,[x,.93,z],C.rope,[Math.PI/2,0,0]);}
+  // Front piles sit just inside the end plank, so the far-side leg is visible
+  // below the deck from the fixed camera. Bearers connect each pair to the boards.
+  for(const z of [2.7,5.4]){
+    k.box(island,[1.5,.16,.18],[-2.65,.4,z],C.darkWood);
+    for(const x of [-3.35,-1.95]){k.cylinder(island,.085,1.2,[x,.4,z],C.wood);k.ring(island,.1,.02,[x,.93,z],C.rope,[Math.PI/2,0,0]);}
+  }
   palm(island,k,[-2.4,.8,-1.5],1.05,.35);palm(island,k,[2.7,.65,.7],.8,-.6);
   for(let i=0;i<5;i++)k.sphere(island,.28+ i*.025,[-3.2+i*.34,.84,-.1+Math.sin(i)*.4],'#6d9a77',[1,.8,1]);
-  for(const [x,z] of [[2,2.2],[-.3,2.8]]){const star=new T.Shape();for(let i=0;i<10;i++){const a=i*Math.PI/5,r=i%2?.11:.29;i?star.lineTo(Math.cos(a)*r,Math.sin(a)*r):star.moveTo(Math.cos(a)*r,Math.sin(a)*r);}star.closePath();k.mesh(island,new T.ExtrudeGeometry(star,{depth:.05,bevelEnabled:false}),'#d4937b',[x,.72,z],[-Math.PI/2,0,.3]);}
+  for(const [x,z] of [[2,2.95],[-.3,2.8]]){const star=new T.Shape();for(let i=0;i<10;i++){const a=i*Math.PI/5,r=i%2?.11:.29;i?star.lineTo(Math.cos(a)*r,Math.sin(a)*r):star.moveTo(Math.cos(a)*r,Math.sin(a)*r);}star.closePath();k.mesh(island,new T.ExtrudeGeometry(star,{depth:.05,bevelEnabled:false}),'#d4937b',[x,.72,z],[-Math.PI/2,0,.3]);}
   if(index===1){laptop(island,k);lighthouse(island,k);}else if(index===2)easel(island,k);else filmCamera(island,k);
   if(waterTitle)island.add(createWaterTitle(index));island.traverse(o=>{o.userData.port=index;});
   return island;

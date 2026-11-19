@@ -1,0 +1,20 @@
+.voyage-sound-dock{position:fixed;left:20px;bottom:16px;z-index:110}
+.sound-toggle{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:44px;min-width:44px;height:44px;min-height:44px;padding:10px;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;color:#46695d;transition:color .2s,opacity .2s,transform .2s}
+.sound-toggle:hover{color:#254b43;transform:scale(1.07)}
+.sound-toggle[aria-pressed=false]{opacity:.65}
+.sound-toggle:disabled{opacity:.35;cursor:default;transform:none}
+.sound-toggle>svg{display:block;width:23px;height:23px;fill:none}
+.sound-toggle-compact{width:36px;min-width:36px;height:36px;min-height:36px;padding:8px;color:#80633d}
+.sound-toggle-compact>svg{width:20px;height:20px}
+.sound-toggle-compact:hover{color:#584023}
+.dialog-topbar>.sound-toggle{margin-left:auto}
+.certificate-map-header>.sound-toggle{margin-left:0}
+.info-dialog>.dialog-sound-toggle,.certificate-lightbox>.dialog-sound-toggle{position:absolute;right:56px;top:10px}
+@media(max-width:640px){.voyage-sound-dock{left:13px;bottom:9px}.voyage-footer{padding-left:43px}.dialog-topbar{gap:10px}.certificate-map-header .dialog-brand{max-width:155px}.info-dialog>.dialog-sound-toggle{right:52px}}
+
+/* The same sound switch remains fixed and accessible on the silhouette and About Me. */
+body:has(.voyage-prologue) .voyage-sound-dock{left:auto;bottom:auto;right:clamp(24px,5vw,72px);top:28px;border:1px solid #b9b39488;border-radius:50%;background:#e9ebd9eb;box-shadow:0 4px 15px #26463d14}
+body:has(.voyage-prologue[data-phase='about']) .voyage-sound-dock{background:#263c32eb;border-color:#c8b58166}
+body:has(.voyage-prologue[data-phase='about']) .voyage-sound-dock .sound-toggle{color:#e5d09b}
+body:has(.voyage-prologue[data-phase='about']) .voyage-sound-dock .sound-toggle:hover{color:#fff0c5}
+@media(max-width:700px){body:has(.voyage-prologue) .voyage-sound-dock{top:21px;right:7%}}

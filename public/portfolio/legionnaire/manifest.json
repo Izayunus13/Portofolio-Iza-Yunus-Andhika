@@ -1,0 +1,77 @@
+{
+  "project": "Légionnaire",
+  "sourceTitle": "Légionnaire | Catatan Akhir Sekolah 75 - SMAN 1 MADIUN 2024",
+  "sourceUrl": "https://www.youtube.com/watch?v=EoJ8pQyXcTA",
+  "publisher": "SMAN 1 MADIUN",
+  "sourceDuration": 2728,
+  "publishedDate": "2024-04-22",
+  "creditedRole": {
+    "name": "Iza Yunus Andhika",
+    "role": "Co-Producer",
+    "source": "Production Department end credits at 43:55; contributions confirmed by the portfolio owner",
+    "contributions": [
+      "Assisting direction",
+      "Equipment preparation and support",
+      "Practical production support"
+    ]
+  },
+  "thumbnailUrl": "https://i.ytimg.com/vi/EoJ8pQyXcTA/maxresdefault.jpg",
+  "cover": "/portfolio/legionnaire/cover.webp",
+  "creditStill": {
+    "media": "/portfolio/legionnaire/06-co-producer-credit.webp",
+    "sourceTime": 2635
+  },
+  "encoding": "Original 1280x720 framing; H.264 yuv420p, AAC, faststart; brief audio boundary fades only.",
+  "clips": [
+    {
+      "id": "01-opening-story",
+      "start": 120,
+      "end": 180,
+      "posterAt": 150,
+      "duration": 60,
+      "media": "/portfolio/legionnaire/01-opening-story.mp4",
+      "poster": "/portfolio/legionnaire/01-opening-story.webp",
+      "bytes": 9100463
+    },
+    {
+      "id": "02-classroom-life",
+      "start": 480,
+      "end": 540,
+      "posterAt": 500,
+      "duration": 60,
+      "media": "/portfolio/legionnaire/02-classroom-life.mp4",
+      "poster": "/portfolio/legionnaire/02-classroom-life.webp",
+      "bytes": 7973791
+    },
+    {
+      "id": "03-teacher-and-student-memories",
+      "start": 1095,
+      "end": 1155,
+      "posterAt": 1120,
+      "duration": 60,
+      "media": "/portfolio/legionnaire/03-teacher-and-student-memories.mp4",
+      "poster": "/portfolio/legionnaire/03-teacher-and-student-memories.webp",
+      "bytes": 7642154
+    },
+    {
+      "id": "04-cohort-togetherness",
+      "start": 2280,
+      "end": 2340,
+      "posterAt": 2305,
+      "duration": 60,
+      "media": "/portfolio/legionnaire/04-cohort-togetherness.mp4",
+      "poster": "/portfolio/legionnaire/04-cohort-togetherness.webp",
+      "bytes": 12831701
+    },
+    {
+      "id": "05-closing-reflection",
+      "start": 2520,
+      "end": 2580,
+      "posterAt": 2560,
+      "duration": 60,
+      "media": "/portfolio/legionnaire/05-closing-reflection.mp4",
+      "poster": "/portfolio/legionnaire/05-closing-reflection.webp",
+      "bytes": 12463968
+    }
+  ]
+}

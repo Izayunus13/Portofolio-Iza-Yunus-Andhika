@@ -1,0 +1,60 @@
+﻿import { chromium } from '@playwright/test';
+import { mkdir, writeFile } from 'node:fs/promises';
+const target='public/portfolio/lowbat-assist';
+await mkdir(target,{recursive:true});
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const captures=[];
+try {
+ const context=await browser.newContext({viewport:{width:1600,height:1100},deviceScaleFactor:1.5,timezoneId:'Asia/Jakarta',reducedMotion:'reduce'});
+ const page=await context.newPage();page.setDefaultTimeout(12000);
+ // Capture only: any unexpected remote mutation is blocked.
+ await page.route('**/api/**',route=>['GET','HEAD','OPTIONS'].includes(route.request().method())?route.continue():route.abort());
+ await page.goto('https://lowbat-assist.vercel.app/',{waitUntil:'networkidle',timeout:60000});
+ await page.evaluate(()=>document.fonts.ready);
+ const shot=async(name,locator)=>{await page.evaluate(()=>document.activeElement instanceof HTMLElement&&document.activeElement.blur());await page.mouse.move(1590,1090);await page.waitForTimeout(350);await (locator??page).screenshot({path:`${target}/${name}.png`,animations:'disabled'});captures.push({file:`${name}.png`,text:(await (locator??page.locator('body')).innerText()).slice(0,3500)});console.log('Captured',name);};
+ await shot('01-dashboard');
+ await page.locator('.nav-item[data-page="guide"]').click();await shot('02-workflow-guide');
+ await page.locator('.nav-item[data-page="pj"]').click();await shot('03-responsibility-directory');
+ const pjCards=page.locator('[data-faculty], [data-pj-faculty], .faculty-card, .pj-faculty-card');
+ console.log('PJ cards',await pjCards.count());
+ await page.locator('.nav-item[data-page="generator"]').click();await shot('04-generator');
+ await page.getByRole('button',{name:/Mulai Generate/}).click();
+ await page.locator('label[for="template-h1-pertandingan-basket"]').click();
+ await shot('05-template-selection',page.locator('#generatorModal .modal-card'));
+ await page.locator('#nextButton').click();
+ await page.locator('#staffNameInput').fill('Demo Portofolio');
+ await page.locator('#facultySelect').selectOption({label:'Fakultas Teknik'});
+ await page.locator('#mikat-mikat').check();
+ await shot('06-delegation',page.locator('#generatorModal .modal-card'));
+ await page.locator('#nextButton').click();await page.locator('#sportCategorySelect').selectOption('Basket');
+ await page.locator('[data-basket-category="PUTRA"]').click();
+ await page.locator('#opponentPickerButton').click();await shot('07-opponent-selection',page.locator('.opponent-picker-card'));
+ await page.locator('[data-opponent-faculty="Fakultas Hukum"]').click();
+ await page.locator('#eventDateInput').fill('2026-11-13');
+ await page.locator('#registrationTimeInput').fill('13:00');
+ await page.locator('#tipOffTimeInput').fill('13:30');
+ await page.locator('#basketVenueSelect').selectOption('Gor Basket UNDIP');
+ // Use a taller viewport to preserve every match field in one real screenshot.
+ await page.setViewportSize({width:1600,height:1450});
+ await page.locator('#generatorModal .modal-body').evaluate(n=>n.scrollTop=0);
+ await shot('08-match-details',page.locator('#generatorModal .modal-card'));
+ await page.locator('#nextButton').click();
+ await shot('09-crosscheck',page.locator('#generatorModal .modal-card'));
+ await page.locator('#closeModalButton').click();
+ await page.setViewportSize({width:1600,height:1100});
+ await page.locator('.nav-item[data-page="history"]').click();
+ await page.locator('#historyFacultyFilter').selectOption('Fakultas Hukum');
+ await shot('10-shared-history');
+ await page.getByRole('button',{name:'Lihat Detail',exact:true}).first().click();
+ await shot('11-message-detail',page.locator('#historyDetailModal .modal-card'));
+ await page.locator('#closeHistoryDetailButton').click();
+ await page.locator('.nav-item[data-page="pj"]').click();
+ console.log('PJ CLICK TARGETS',JSON.stringify(await page.locator('.page-section.active').evaluate(n=>[...n.querySelectorAll('button,[role="button"]')].map(n=>({text:n.innerText,html:n.outerHTML.slice(0,250)})))));
+ const faculty=page.getByRole('button',{name:/Fakultas Teknik/}).first();
+ if(await faculty.count()) {await faculty.click();await shot('12-responsibility-detail');}
+ const mobile=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:2,isMobile:true,hasTouch:true,timezoneId:'Asia/Jakarta',reducedMotion:'reduce'});
+ await mobile.goto('https://lowbat-assist.vercel.app/',{waitUntil:'networkidle'});
+ await mobile.screenshot({path:`${target}/13-mobile-dashboard.png`,animations:'disabled'});captures.push({file:'13-mobile-dashboard.png',text:'Actual mobile dashboard at 390 x 844.'});
+ await writeFile(`${target}/capture-notes.json`,JSON.stringify({source:'https://lowbat-assist.vercel.app/',capturedAt:new Date().toISOString(),notes:'Original browser captures. Sample inputs stop at crosscheck; no message was generated or saved to the shared database.',captures},null,2));
+ console.log('Done',captures.length);
+}finally{await browser.close()}

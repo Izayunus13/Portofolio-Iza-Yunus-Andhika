@@ -1,0 +1,51 @@
+{
+  "project": "FORMAS Semarang",
+  "softwareCredit": "Adobe Photoshop",
+  "creditSource": "Confirmed by the portfolio owner",
+  "slideOrder": [
+    "Poster",
+    "Sticker",
+    "Poster Welcome",
+    "Visual logo",
+    "Visual welcoming party"
+  ],
+  "images": [
+    {
+      "source": "POSTER SOSKAM fix.png",
+      "media": "/portfolio/formas/01-goes-to-school-poster.webp",
+      "bytes": 600754
+    },
+    {
+      "source": "STICKER/BUNDLING STICKER 1.png",
+      "media": "/portfolio/formas/02-sticker-bundle.webp",
+      "bytes": 1234980
+    },
+    {
+      "source": "2025/FEEDS/SNBP/FEEDS SNBP.png",
+      "media": "/portfolio/formas/03-snbp-welcome-poster.webp",
+      "bytes": 412664
+    }
+  ],
+  "videos": [
+    {
+      "source": "logooo.mp4",
+      "media": "/portfolio/formas/04-logo-visual.mp4",
+      "poster": "/portfolio/formas/04-logo-visual.webp",
+      "duration": 8.5,
+      "hasAudio": false,
+      "width": 1280,
+      "height": 720,
+      "bytes": 1319647
+    },
+    {
+      "source": "Visual Gabungan.mp4",
+      "media": "/portfolio/formas/05-welcoming-party-visual.mp4",
+      "poster": "/portfolio/formas/05-welcoming-party-visual.webp",
+      "duration": 23.12,
+      "hasAudio": true,
+      "width": 1280,
+      "height": 720,
+      "bytes": 5956972
+    }
+  ]
+}

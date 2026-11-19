@@ -1,0 +1,23 @@
+{
+  "project": "I-GATE 2025",
+  "concept": "Sore meets the Enchanted Garden",
+  "sourceUrl": "https://www.instagram.com/reel/DRChiwBjLnm/",
+  "publisherAtCapture": "igate.2026",
+  "originalCaptionEventYear": 2025,
+  "publicationDate": "2025-11-14",
+  "roles": [
+    "Director",
+    "Cameraman",
+    "Editor"
+  ],
+  "roleSource": "Confirmed by the portfolio owner",
+  "media": "/portfolio/igate-2025/igate-2025-reel.mp4",
+  "poster": "/portfolio/igate-2025/cover.webp",
+  "duration": 53.25,
+  "width": 1280,
+  "height": 792,
+  "hasAudio": true,
+  "posterTime": 49,
+  "bytes": 14209660,
+  "framing": "Full source image; no black padding detected and no crop applied."
+}

@@ -1,0 +1,74 @@
+/* All four chapters share one grid cell: changing the visible copy cannot resize the ocean. */
+.voyage-app .captain-panel,.voyage-app .captain-panel[data-hidden="true"]{
+ display:grid;grid-template-columns:minmax(0,1fr);align-content:start;
+ opacity:1;transform:none;visibility:visible;transition:none;
+}
+.voyage-app .captain-panel .captain-panel-layer{
+ position:relative;inset:auto;grid-area:1 / 1;align-self:start;
+ width:100%;max-width:none;min-width:0;margin:0;padding:0;
+ opacity:0;transform:translate3d(-18px,0,0);visibility:hidden;pointer-events:none;
+ transition:opacity .28s ease,transform .5s cubic-bezier(.4,0,.2,1),visibility 0s .5s;
+ backface-visibility:hidden;
+}
+.voyage-app .captain-panel .captain-panel-layer[data-active="true"]{
+ opacity:1;transform:translate3d(0,0,0);visibility:visible;pointer-events:auto;
+ transition:opacity .52s cubic-bezier(.2,.7,.2,1) .04s,transform .72s cubic-bezier(.22,1,.36,1),visibility 0s;
+}
+.voyage-app .captain-panel .captain-panel-layer>.eyebrow{
+ display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;
+ letter-spacing:1.1px;line-height:1.6;margin-bottom:20px;
+}
+/* Each page sizes its paper to the current content; media and copy keep their entrance animation. */
+.portfolio-dialog.treasure-dialog:not(.certificate-dialog){
+ height:fit-content;max-height:min(900px,90svh);
+}
+.portfolio-dialog.treasure-dialog:not(.certificate-dialog)>.scroll-sheet{height:auto}
+.portfolio-dialog.treasure-dialog:not(.certificate-dialog)>.scroll-sheet>.dialog-shell{
+ height:auto;max-height:min(900px,90svh);scroll-behavior:auto;overflow-anchor:none;
+}
+.portfolio-dialog.treasure-dialog:not(.certificate-dialog) .treasure-content{
+ display:flex;flex-direction:column;min-height:0;
+}
+.portfolio-dialog.treasure-dialog:not(.certificate-dialog) .dialog-topbar,
+.portfolio-dialog.treasure-dialog:not(.certificate-dialog) .dialog-category-nav,
+.portfolio-dialog.treasure-dialog:not(.certificate-dialog) .dialog-bottom{flex-shrink:0}
+.portfolio-dialog.treasure-dialog:not(.certificate-dialog) .portfolio-panel{
+ display:block;min-width:0;flex:none;
+}
+.portfolio-dialog .project-slide{
+ width:100%;animation:none;
+}
+.portfolio-dialog .project-slide .project-details{
+ animation:project-copy-enter .6s cubic-bezier(.22,1,.36,1) .05s both;
+ backface-visibility:hidden;
+}
+.portfolio-dialog .project-slide.media-right .project-details{animation-name:project-copy-enter-left}
+.portfolio-dialog .project-slide .project-media{
+ animation:project-media-enter .58s cubic-bezier(.22,1,.36,1) both;
+ backface-visibility:hidden;
+}
+/* Start the entrance when the unrolled paper actually exposes its contents. */
+.portfolio-dialog:is([data-scroll-phase='preparing'],[data-scroll-phase='opening']) .project-slide .project-details,
+.portfolio-dialog:is([data-scroll-phase='preparing'],[data-scroll-phase='opening']) .project-slide .project-media{animation:none}
+.portfolio-dialog .project-slide.slide-previous .project-media{animation-name:project-media-enter-previous}
+@keyframes project-media-enter-previous{from{opacity:0;transform:translate3d(0,-7px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes project-copy-enter{from{opacity:0;transform:translate3d(14px,0,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes project-copy-enter-left{from{opacity:0;transform:translate3d(-14px,0,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes project-media-enter{from{opacity:0;transform:translate3d(0,9px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@media(max-width:900px){
+ .voyage-app .captain-panel .captain-panel-layer>.eyebrow{letter-spacing:.65px;margin-bottom:17px}
+}
+@media(prefers-reduced-motion:reduce){
+ .voyage-app .captain-panel .captain-panel-layer,
+ .portfolio-dialog .project-slide,
+ .portfolio-dialog .project-slide .project-details,
+ .portfolio-dialog .project-slide .project-media{animation:none!important;transition:none!important;transform:none!important}
+}
+
+@media(max-width:700px){
+ .portfolio-dialog.treasure-dialog::backdrop{backdrop-filter:blur(4px)}
+}
+
+/* The portfolio rolls closed after the copy fades, using the existing paper controller. */
+.portfolio-dialog:not(.certificate-dialog)[data-scroll-phase='closing'] .scroll-opening-visuals{visibility:visible}
+.portfolio-dialog:not(.certificate-dialog)[data-scroll-phase='closing'] .scroll-sheet{visibility:hidden;pointer-events:none}

@@ -1,0 +1,32 @@
+{
+  "project": "Tenseiga_Clinic",
+  "context": "Internship",
+  "works": [
+    {
+      "source": "SERUM GOLD ANTI AGING.mp4",
+      "sourceBytes": 14058579,
+      "media": "/portfolio/tenseiga-clinic/01-serum-gold.mp4",
+      "poster": "/portfolio/tenseiga-clinic/01-serum-gold.webp",
+      "duration": 12.0,
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "hasAudio": true,
+      "posterTime": 4,
+      "bytes": 1175838
+    },
+    {
+      "source": "Visual Tenseiga.mp4",
+      "sourceBytes": 2903617,
+      "media": "/portfolio/tenseiga-clinic/02-clinic-visual.mp4",
+      "poster": "/portfolio/tenseiga-clinic/02-clinic-visual.webp",
+      "duration": 10.0,
+      "width": 720,
+      "height": 1280,
+      "fps": 30,
+      "hasAudio": true,
+      "posterTime": 4,
+      "bytes": 269867
+    }
+  ]
+}

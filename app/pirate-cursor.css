@@ -1,0 +1,14 @@
+/* Native beveled arrow cursors keep the 3D pointer tip exactly under the mouse. */
+@media(any-hover:hover) and (any-pointer:fine) {
+  :root {
+    --voyage-cursor:url('/cursors/pirate-pointer.svg') 4 3,default;
+    --voyage-cursor-active:url('/cursors/pirate-pointer-active.svg') 4 3,pointer;
+    --voyage-cursor-busy:url('/cursors/pirate-loading.svg') 16 16,none;
+  }
+  html,body,.voyage-app {cursor:var(--voyage-cursor)}
+  button:not(:disabled),a[href],[role='button']:not([aria-disabled='true']),summary,label[for],select {cursor:var(--voyage-cursor-active)}
+  .voyage-app button:disabled,.voyage-app [aria-disabled='true'],[aria-busy='true'],[aria-busy='true'] *,
+  .voyage-app:not(.world-ready),.world-loading,.voyage-app[data-traveling='true'],
+  .treasure-dialog[data-scroll-phase='preparing'],.treasure-dialog[data-scroll-phase='opening'],.treasure-dialog[data-scroll-phase='revealing'] {cursor:var(--voyage-cursor-busy)}
+  textarea,input:not([type='button']):not([type='submit']):not([type='reset']):not([type='checkbox']):not([type='radio']):not([type='range']):not([type='color']),[contenteditable='true'] {cursor:text}
+}

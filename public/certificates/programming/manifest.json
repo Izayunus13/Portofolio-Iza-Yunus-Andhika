@@ -1,0 +1,38 @@
+[
+  {
+    "source": "Python_Essentials_2_certificate_izayunusandhika-gmail-com_7aa4eb5c-b8e6-402c-b85b-d87853207cb4.pdf",
+    "document": "/certificates/programming/python-essentials-2.pdf",
+    "image": "/certificates/programming/python-essentials-2.webp",
+    "pages": [
+      {
+        "page": 1,
+        "text": "This certificate is awarded to\nIza Yunus Andhika\nfor successfully completing\nPython Essentials 2\noffered by Networking Academy\nthrough the Cisco Networking Academy program.\nLynn Bloomer\nDirector\nCisco Networking Academy\n02 Jul 2026\nCompletion Date\nCert ID: 7aa4eb5c-b8e6-402c-b85b-d87853207cb4\n",
+        "links": []
+      }
+    ],
+    "sha256": "3a3e8680e3366025db02cbab67556bde176ec40dfe3d8cb0a7138cde2ddfbc18"
+  },
+  {
+    "source": "Sertifikat CS107 C++ Programming.pdf",
+    "document": "/certificates/programming/cs107-cpp-programming.pdf",
+    "image": "/certificates/programming/cs107-cpp-programming.webp",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Iza Yunus Andhika\nCS107: C++ Programming\nJuly 21, 2026\n0074043491IY\n",
+        "links": [
+          "https://learn.saylor.org/admin/tool/certificate/index.php?code=0074043491IY"
+        ]
+      },
+      {
+        "page": 2,
+        "text": "Iza Yunus Andhika\nCS107: C++ Programming\nJuly 21, 2026\n0074043491IY\n40 Hours\n87.50 %\n4\nPowered by TCPDF (www.tcpdf.org)\n",
+        "links": [
+          "https://learn.saylor.org/admin/tool/certificate/index.php?code=0074043491IY",
+          "http://www.tcpdf.org"
+        ]
+      }
+    ],
+    "sha256": "f397230f8be0c1c13f01649254c7e32eb246b1d35aca7b6958c6bcef7d137c4e"
+  }
+]

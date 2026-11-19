@@ -1,0 +1,84 @@
+{
+  "project": "Jingle PKKMB FH UNS",
+  "sourceFilename": "Jingle UNS By UNDIP YAS.mp4",
+  "sourceBytes": 870538348,
+  "sourceDuration": 264.47,
+  "sourceDimensions": {
+    "width": 3840,
+    "height": 2160
+  },
+  "role": "Full Editor",
+  "roleSource": "Confirmed by the portfolio owner",
+  "responsibilities": [
+    "Raw-footage selection and assembly",
+    "Footage sequencing",
+    "Color grading",
+    "Sound editing"
+  ],
+  "cover": "/portfolio/jingle-pkkmb-fh-uns/cover.webp",
+  "coverSourceTime": 187,
+  "framing": "Full native 16:9 frame, scaled to 1280x720 with no crop or stretch.",
+  "encoding": "H.264, yuv420p, 30fps, CRF 24 with 2200k maxrate / 4400k buffer, AAC 128k, faststart. Source soundtrack preserved.",
+  "clips": [
+    {
+      "id": "01-opening-campus",
+      "start": 0,
+      "end": 50,
+      "posterTime": 33,
+      "duration": 50,
+      "media": "/portfolio/jingle-pkkmb-fh-uns/01-opening-campus.mp4",
+      "poster": "/portfolio/jingle-pkkmb-fh-uns/01-opening-campus.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 13522441
+    },
+    {
+      "id": "02-small-group-performance",
+      "start": 50,
+      "end": 105,
+      "posterTime": 77,
+      "duration": 55,
+      "media": "/portfolio/jingle-pkkmb-fh-uns/02-small-group-performance.mp4",
+      "poster": "/portfolio/jingle-pkkmb-fh-uns/02-small-group-performance.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 16288154
+    },
+    {
+      "id": "03-cohort-transition",
+      "start": 105,
+      "end": 160,
+      "posterTime": 121,
+      "duration": 55,
+      "media": "/portfolio/jingle-pkkmb-fh-uns/03-cohort-transition.mp4",
+      "poster": "/portfolio/jingle-pkkmb-fh-uns/03-cohort-transition.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 15846804
+    },
+    {
+      "id": "04-ensemble-performance",
+      "start": 160,
+      "end": 215,
+      "posterTime": 187,
+      "duration": 55,
+      "media": "/portfolio/jingle-pkkmb-fh-uns/04-ensemble-performance.mp4",
+      "poster": "/portfolio/jingle-pkkmb-fh-uns/04-ensemble-performance.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 16290651
+    },
+    {
+      "id": "05-finale-credits",
+      "start": 215,
+      "end": 264,
+      "posterTime": 231,
+      "duration": 49,
+      "media": "/portfolio/jingle-pkkmb-fh-uns/05-finale-credits.mp4",
+      "poster": "/portfolio/jingle-pkkmb-fh-uns/05-finale-credits.webp",
+      "width": 1280,
+      "height": 720,
+      "bytes": 14035773
+    }
+  ]
+}

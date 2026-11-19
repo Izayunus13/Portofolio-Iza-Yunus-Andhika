@@ -1,0 +1,55 @@
+.cloud-loading{--cloud-width:max(82vw,76vh);position:fixed;inset:0;z-index:100;isolation:isolate;overflow:hidden;cursor:var(--voyage-cursor-busy,none);color:#24434a}
+.cloud-loading-veil{position:absolute;inset:0;background:radial-gradient(ellipse at 45% 30%,#fffffb 0%,#f6f8f1 52%,#e6eee6 100%);z-index:0;will-change:opacity}
+.cloud-gate{position:absolute;top:0;width:var(--cloud-width);height:100%;z-index:2;will-change:transform,opacity;animation:cloud-breathe 10s ease-in-out infinite alternate}
+.cloud-white-wash{position:absolute;inset:0;z-index:1;opacity:0;background:radial-gradient(ellipse at 50% 44%,#fffffff2 0%,#ffffffb3 42%,#ffffff0d 100%);will-change:opacity;pointer-events:none}
+.cloud-mist{position:absolute;top:-18%;width:var(--cloud-width);height:136%;z-index:1;opacity:0;pointer-events:none;will-change:transform,opacity;background:radial-gradient(ellipse at 74% 18%,#ffffffeb 0%,#ffffffc2 16%,#ffffff66 34%,transparent 64%),radial-gradient(ellipse at 78% 55%,#fffffff0 0%,#ffffffc2 21%,#ffffff59 39%,transparent 68%),radial-gradient(ellipse at 70% 86%,#ffffffd9 0%,#ffffff94 24%,transparent 64%)}
+.cloud-mist{mask-image:linear-gradient(90deg,transparent 0%,#000 14%,#000 86%,transparent 100%)}
+.cloud-mist-left{left:calc(50% - var(--cloud-width)*.84)}
+.cloud-mist-right{right:calc(50% - var(--cloud-width)*.84);background:radial-gradient(ellipse at 26% 18%,#ffffffeb 0%,#ffffffc2 16%,#ffffff66 34%,transparent 64%),radial-gradient(ellipse at 22% 55%,#fffffff0 0%,#ffffffc2 21%,#ffffff59 39%,transparent 68%),radial-gradient(ellipse at 30% 86%,#ffffffd9 0%,#ffffff94 24%,transparent 64%)}
+.cloud-volume{position:absolute;inset:0}
+.cloud-loading[data-phase='opening'] .cloud-gate{animation-play-state:paused}
+.cloud-gate-left{left:calc(50% - var(--cloud-width)*.9)}
+.cloud-gate-right{right:calc(50% - var(--cloud-width)*.9);animation-delay:-4s}
+.cloud-layer{position:absolute;width:100%;height:auto;display:block;pointer-events:none;user-select:none;}
+.cloud-layer-0{left:-8%;top:-24%;width:112%;opacity:.9}
+.cloud-layer-1{left:0;top:20%}
+.cloud-layer-2{left:-5%;top:61%;width:110%}
+.cloud-gate-right .cloud-layer{scale:-1 1}
+.cloud-gate-right .cloud-layer-1{left:2%;top:16%}
+.cloud-soft-volume{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 12%,#fffdf4 0 19%,transparent 53%),radial-gradient(ellipse at 65% 43%,#eef0e8 0 25%,transparent 61%),radial-gradient(ellipse at 65% 85%,#e6ece2 0 22%,transparent 58%);transition:opacity .5s}
+.cloud-loading[data-clouds-ready='true'] .cloud-soft-volume{opacity:0}
+.cloud-loading-copy{position:absolute;z-index:4;top:50%;left:50%;translate:-50% -50%;width:min(600px,88vw);text-align:center;text-shadow:0 1px 18px #fffdf0b3;animation:sky-copy-arrive .8s ease both}
+.sky-compass{position:relative;width:88px;height:88px;margin:0 auto 25px;display:grid;place-items:center;filter:drop-shadow(0 9px 12px #5c75601a);animation:sky-compass-float 5s ease-in-out infinite}
+.sky-compass-ring{position:absolute;inset:6px;border:1px solid #b4975b80;border-radius:50%;box-shadow:0 0 0 5px #fff9e526,inset 0 0 0 4px #fff5d126;background:conic-gradient(from -28deg,#c4a36522,#fff9e526,#b18d4a33,#fff9e50d,#c4a36522)}
+.sky-compass-face{display:grid;place-items:center;width:49px;height:49px;border:1px solid #b79d6b99;border-radius:50%;background:radial-gradient(circle at 30% 20%,#fffdf4,#e1d7b2);box-shadow:inset 0 1px 0 #fffdf4,0 4px 7px #8e895123;color:#385f5d}
+.sky-compass::before,.sky-compass::after,.sky-compass>i,.sky-compass>b{content:'';position:absolute;background:#a88953;opacity:.7}
+.sky-compass::before,.sky-compass::after{width:1px;height:10px;left:calc(50% - .5px)}
+.sky-compass::before{top:0}.sky-compass::after{bottom:0}.sky-compass>i,.sky-compass>b{height:1px;width:10px;top:calc(50% - .5px)}.sky-compass>i{left:0}.sky-compass>b{right:0}
+.sky-loading-kicker{font-size:9px;letter-spacing:3.8px;font-weight:600;color:#668173;margin-bottom:19px}
+.cloud-loading-copy h2{font-family:var(--serif);font-size:clamp(38px,4.3vw,65px);line-height:1.1;letter-spacing:-1.7px;font-weight:400}
+.cloud-loading-copy h2 em{color:#758d75}
+.sky-loading-caption{font-family:var(--serif);font-style:italic;font-size:16px;color:#758c7b;margin-top:20px}
+.sky-loading-route{position:relative;display:flex;justify-content:center;align-items:center;gap:5px;width:190px;height:29px;margin:24px auto 8px;color:#8c784c}
+.sky-loading-route>span{position:absolute;left:0;right:0;top:18px;border-top:1px dashed #92a88a88}
+.sky-loading-route>svg{position:absolute;left:0;top:0;animation:sky-ship-track 3s ease-in-out infinite;background:#edf1e455}
+.sky-loading-route>i{width:3px;height:3px;border-radius:50%;background:#a08c62;opacity:.2;animation:sky-loading-dot 1.6s infinite}.sky-loading-route>i:nth-of-type(2){animation-delay:.2s}.sky-loading-route>i:nth-of-type(3){animation-delay:.4s}
+.sky-loading-status{font-size:6px;letter-spacing:2px;color:#7b8c75}
+.cloud-birds{position:absolute;inset:0;z-index:3;pointer-events:none;will-change:opacity}
+.cloud-bird-flight{position:absolute;left:-190px;top:13%;width:176px;height:176px;will-change:transform;animation:cloud-bird-flight 13s linear infinite;animation-delay:-3s}
+.cloud-bird-sprite{display:block;width:100%;height:100%;overflow:hidden;contain:paint}
+.cloud-bird-sprite img{display:block;width:3200%;max-width:none;height:100%;will-change:transform;animation:cloud-bird-wings 1.428s steps(32,end) infinite;pointer-events:none;user-select:none}
+.cloud-bird-1{width:108px;height:108px;top:52%;animation-duration:16s;animation-delay:-9s;animation-direction:reverse}
+.cloud-bird-1 .cloud-bird-sprite{scale:-1 1}.cloud-bird-1 img{animation-delay:-.43s}
+.cloud-bird-2{width:136px;height:136px;top:29%;animation-duration:14s;animation-delay:-11s}.cloud-bird-2 img{animation-delay:-.86s}
+@keyframes cloud-bird-flight{0%{transform:translate3d(0,0,0) rotate(-3deg)}35%{transform:translate3d(calc(35vw + 133px),-12px,0) rotate(2deg)}70%{transform:translate3d(calc(70vw + 266px),8px,0) rotate(-2deg)}100%{transform:translate3d(calc(100vw + 380px),0,0) rotate(1deg)}}
+@keyframes cloud-bird-wings{to{transform:translate3d(-100%,0,0)}}
+@keyframes cloud-breathe{from{transform:translate3d(0,-8px,0)}to{transform:translate3d(10px,10px,0)}}
+@keyframes sky-copy-arrive{from{opacity:0;transform:translate3d(0,12px,0)}to{opacity:1;transform:none}}
+@keyframes sky-compass-float{0%,100%{transform:translate3d(0,0,0) rotate(-3deg)}50%{transform:translate3d(0,-5px,0) rotate(3deg)}}
+@keyframes sky-ship-track{0%{transform:translateX(0);opacity:0}15%,80%{opacity:1}100%{transform:translateX(170px);opacity:0}}
+@keyframes sky-loading-dot{50%{opacity:.8}}
+@keyframes sky-fallback-bird{0%,100%{transform:translate3d(-20px,0,0) scaleY(.7)}50%{transform:translate3d(70px,-15px,0) scaleY(1)}}
+@media(max-width:640px){.cloud-layer-0{top:-17%}.cloud-layer-1{top:25%}.cloud-layer-2{top:65%}.cloud-loading-copy{width:90vw}.sky-compass{width:72px;height:72px;margin-bottom:23px}.sky-compass-face{width:43px;height:43px}.sky-compass-face svg{width:25px}.sky-loading-kicker{font-size:7px;letter-spacing:2.8px;margin-bottom:19px}.cloud-loading-copy h2{font-size:clamp(30px,8.5vw,43px);letter-spacing:-.8px}.sky-loading-caption{font-size:13px;margin-top:17px}.sky-loading-route{margin-top:22px}.sky-loading-status{font-size:5px;letter-spacing:1.5px}}
+@media(prefers-reduced-motion:reduce){.cloud-gate,.cloud-loading-copy,.sky-compass,.sky-loading-route>svg,.sky-loading-route>i,.cloud-bird-flight,.cloud-bird-sprite img{animation:none!important}.sky-loading-route>svg{left:85px}.cloud-soft-volume{transition:none}}
+
+@media(prefers-reduced-motion:reduce){.cloud-bird-0{left:14%;top:15%}.cloud-bird-1{left:65%;top:24%}.cloud-bird-2{left:42%;top:65%}}

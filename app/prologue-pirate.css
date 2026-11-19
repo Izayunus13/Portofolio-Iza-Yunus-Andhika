@@ -1,0 +1,219 @@
+/* A calm sky, distant passing ship, open water, then the low wooden pier. */
+.pirate-backdrop,.pirate-scene-fallback,.pirate-environment{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.pirate-backdrop-harbor{background:radial-gradient(ellipse at 24% 31%,#f3e8c36b,transparent 50%),linear-gradient(180deg,#a1c8c3,#d0ded4 53%,#73b1ae)}
+.pirate-scene-fallback{opacity:1}
+.pirate-environment{z-index:1;opacity:0;transition:opacity .5s ease}
+.pirate-backdrop[data-renderer='webgl']>.pirate-environment{opacity:1}
+.pirate-backdrop[data-renderer='webgl']>.pirate-scene-fallback{visibility:hidden}
+.pirate-backdrop-harbor>.pirate-environment{transition:none}
+.pirate-harbor-poster,.pirate-harbor-poster>img{position:absolute;inset:0;display:block;width:100%;height:100%}
+.pirate-harbor-poster>img{object-fit:cover;object-position:center}
+.pirate-backdrop[data-renderer='webgl']>.pirate-harbor-poster{visibility:hidden}
+.pirate-sea-mist{position:absolute;z-index:2;left:-12%;right:-12%;top:34%;height:22%;pointer-events:none;background:radial-gradient(ellipse at 32% 46%,#dae9f36b,transparent 62%),radial-gradient(ellipse at 78% 54%,#dce9ef54,transparent 63%);filter:blur(12px);animation:harbor-mist-drift 24s ease-in-out infinite alternate}
+@keyframes harbor-mist-drift{from{transform:translate3d(-1.5%,0,0)}to{transform:translate3d(1.5%,1%,0)}}
+.summit-opening{background:#a1ceca}
+.summit-brand,.summit-signature,.summit-start,.summit-welcome>p,.summit-welcome h1{color:#233f39}
+.summit-signature,.summit-start-label{text-shadow:0 1px 16px #e5e8d3}
+.pirate-backdrop-cabin{background:#493b2d}
+.pirate-backdrop-cabin .pirate-scene-fallback{background:repeating-linear-gradient(0deg,#4b392b 0 38px,#34291f 39px 42px,#5b4330 43px 80px)}
+.pirate-fallback-windows{position:absolute;top:19%;left:8%;right:8%;height:43%;display:flex;gap:5%}
+.pirate-fallback-windows>span{flex:1;border:12px solid #927046;box-shadow:0 0 0 3px #baa06a;background:linear-gradient(#abc5bd 0 54%,#527d79 55% 100%);position:relative}
+.pirate-fallback-windows>span::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 49%,#ac905c 49% 51%,transparent 51%),linear-gradient(transparent 49%,#ac905c 49% 51%,transparent 51%)}
+.pirate-fallback-beam{position:absolute;inset:7% 0 auto;height:6%;background:#30291f;box-shadow:0 5px 0 #927047}
+.pirate-fallback-floor{position:absolute;inset:67% -30% -40%;background:repeating-linear-gradient(90deg,#79583d 0 65px,#463525 66px 68px,#8a6748 69px 130px);transform:perspective(450px) rotateX(52deg);transform-origin:50% 0}
+.prologue-about{background:#302d25;color:#eee4ce}
+.pirate-cabin-shade{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#1e261fe8 0%,#263025d1 26%,#26302591 48%,#25312825 74%,#202b2620),linear-gradient(0deg,#25282080,transparent 30%,transparent 80%,#24271e40)}
+.prologue-about-copy{text-shadow:0 2px 18px #161e1b38}
+.prologue-about h2{color:#f2ead5}
+.prologue-about h2>em{color:#d7bd85}
+.prologue-about .prologue-eyebrow{color:#d6c496}
+.prologue-eyebrow>span{background:#bda574}
+.prologue-about .prologue-role{color:#e7dfc6}
+.prologue-role>span{color:#bba578}
+.prologue-about-copy>p:not(.prologue-eyebrow):not(.prologue-role){color:#e1dfca}
+.prologue-about-actions>span,.prologue-about-mark{color:#c9bd99}
+.prologue-about-actions>.button{background:#d8c18d;color:#26382f;border-color:#ead6a566;box-shadow:0 4px 18px #181e1826}
+.prologue-about-actions>.button:not(:disabled):hover{background:#ead5a5}
+.prologue-about-portrait{padding:12px 12px 0;background:#ded4b8;border-color:#ecdfb59c;box-shadow:0 24px 70px #15221b5c,0 4px 12px #0f1a1a33;rotate:2deg}
+.prologue-portrait-window{background:radial-gradient(ellipse at 45% 26%,#dfd7b6,#b7b99a 60%,#80988a)}
+.prologue-about-portrait figcaption{color:#4b503b}
+.prologue-about-portrait figcaption small{color:#6b6d50}
+.prologue-about-copy>:nth-child(7){--copy-delay:.62s}
+@media(max-width:700px){
+ .pirate-cabin-shade{background:linear-gradient(180deg,#27332b15,#25302666 29%,#202b23db 47%,#202b23ed 70%,#202b23f2)}
+ .prologue-about-portrait{rotate:1.5deg}
+ .prologue-about-copy>p:not(.prologue-eyebrow):not(.prologue-role){line-height:1.85}
+}
+@media(prefers-reduced-motion:reduce){.pirate-environment{transition:none}}
+
+
+/* The same white 3D seagull atlas used during the portfolio cloud transition. */
+.harbor-birds{z-index:2}
+.harbor-birds .cloud-bird-flight{width:128px;height:128px;top:14%;animation-duration:25s;animation-delay:-6s;filter:drop-shadow(0 3px 3px #2d595c20)}
+.harbor-birds .cloud-bird-1{width:86px;height:86px;top:25%;animation-duration:31s;animation-delay:-18s}
+.harbor-birds .cloud-bird-2{width:101px;height:101px;top:8%;animation-duration:29s;animation-delay:-23s}
+@media(max-width:700px){
+ .harbor-birds .cloud-bird-flight{width:99px;height:99px;top:15%}
+ .harbor-birds .cloud-bird-1{width:68px;height:68px;top:25%}
+ .harbor-birds .cloud-bird-2{width:79px;height:79px;top:8%}
+}
+@media(prefers-reduced-motion:reduce){
+ .pirate-sea-mist{animation:none}
+ .harbor-birds .cloud-bird-0{left:9%;top:14%}
+ .harbor-birds .cloud-bird-1{left:74%;top:23%}
+ .harbor-birds .cloud-bird-2{left:57%;top:7%}
+}
+
+/* Keep the entry action legible over the silhouette on a narrow screen. */
+@media(max-width:700px){
+ .summit-start-label{gap:8px;padding:9px 11px;background:#edf0d9eb;border:1px solid #f9f4dc99;border-radius:40px;box-shadow:0 4px 18px #304e3c18;text-shadow:none}
+ .summit-start-label>i{width:36px;height:36px}
+ .summit-start-label>span{font-size:17px}
+ .summit-signature{font-size:8px;letter-spacing:.8px;max-width:120px;bottom:30px}
+ .summit-signature>span{font-size:6.5px;letter-spacing:.45px}
+}
+
+/* Bevelled sea-green lettering, with a solid extruded edge and a soft cast shadow. */
+.summit-welcome h1{text-shadow:none}
+.summit-welcome h1>.welcome-title-line{position:relative;display:grid;isolation:isolate;text-shadow:none}
+.summit-welcome h1>.welcome-title-main{font-size:1em;line-height:1.13;margin-bottom:0}
+/* Ringbearer capitals extend beyond their line box. Expand both paint layers equally.
+   Negative margins preserve the title layout; grid prevents their margins collapsing. */
+.welcome-title-depth,.welcome-title-face{
+ display:block;font:inherit;letter-spacing:inherit;line-height:inherit;
+ padding-block:.16em;margin-block:-.16em;
+}
+.welcome-title-depth{
+ position:absolute;inset:0;z-index:0;color:#31523f;pointer-events:none;user-select:none;
+ /* One continuous side tone avoids contour lines between stacked extrusion steps. */
+ text-shadow:
+  .003em .006em .003em #31523f,
+  .006em .012em .003em #31523f,
+  .009em .018em .003em #31523f,
+  .016em .03em .018em #183d3330,
+  .035em .06em .05em #183d3326;
+}
+.welcome-title-face{
+ position:relative;z-index:1;color:#3a644f;
+ -webkit-text-stroke:0;
+
+}
+@supports ((background-clip:text) or (-webkit-background-clip:text)){
+ .welcome-title-face{
+  background:linear-gradient(155deg,#91a17b 0%,#628261 22%,#466e51 48%,#355b44 76%,#294c3b 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+ }
+}
+@media(forced-colors:active){
+ .welcome-title-depth{display:none}
+ .welcome-title-face{background:none;color:CanvasText;-webkit-text-fill-color:CanvasText;-webkit-text-stroke:0}
+}
+
+/* A full-width timber navigation plaque, with brass fittings and a pressed wooden edge. */
+.prologue-about-actions{width:100%;max-width:640px}
+.prologue-about-actions>.pirate-explore{
+ --pirate-plank-surface:linear-gradient(180deg,#efca8b26,transparent 26%,#16130e33),
+  repeating-linear-gradient(2deg,transparent 0 3px,#f0c68b0d 4px,transparent 5px 8px,#1c130d24 9px 10px),
+  linear-gradient(104deg,#805c3b,#62462f 40%,#795736 75%,#5e432e);
+ position:relative;isolation:isolate;display:grid;grid-template-columns:54px minmax(0,1fr) 54px;
+ align-items:center;gap:20px;width:100%;min-height:88px;padding:16px 24px;
+ border:1px solid #bc9a63;border-radius:4px;background:var(--pirate-plank-surface);
+ color:#f2e3bd;text-align:left;text-shadow:0 2px 2px #201a14b3;
+ box-shadow:inset 0 2px 1px #edcf9566,inset 0 -3px 3px #261b1499,
+  0 2px 0 #b09461,0 5px 0 #493323,0 7px 0 #28231b,0 14px 22px #0d151a66;
+ transition:transform .22s cubic-bezier(.2,.7,.2,1),box-shadow .22s ease;
+}
+.pirate-explore::before{content:'';position:absolute;inset:6px;border:1px solid #d1b17a55;border-radius:2px;pointer-events:none}
+.pirate-explore::after{
+ content:'';position:absolute;inset:0;pointer-events:none;
+ background:
+  radial-gradient(circle at 12px 12px,#eed79e 0 1px,#806338 1.5px 2.5px,transparent 3px),
+  radial-gradient(circle at calc(100% - 12px) 12px,#eed79e 0 1px,#806338 1.5px 2.5px,transparent 3px),
+  radial-gradient(circle at 12px calc(100% - 12px),#eed79e 0 1px,#806338 1.5px 2.5px,transparent 3px),
+  radial-gradient(circle at calc(100% - 12px) calc(100% - 12px),#eed79e 0 1px,#806338 1.5px 2.5px,transparent 3px);
+}
+.pirate-explore-compass{
+ display:grid;place-items:center;width:50px;height:50px;border:2px solid #b08e4d;border-radius:50%;
+ background:radial-gradient(circle at 30% 22%,#f7e5b1,#cead67 58%,#886f39);color:#3b4e3f;
+ box-shadow:inset 0 1px 1px #fff0c2,inset 0 0 0 3px #e4ce9580,0 3px 0 #3d3020,0 5px 7px #1c211c66;
+}
+/* Symmetrical icon columns put the lettering at the physical centre of the timber plaque. */
+.pirate-explore-copy{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;text-align:center}
+.pirate-explore-copy>small{
+ font:500 9px/1.4 var(--sans);letter-spacing:1.7px;color:#d4b584;
+ text-shadow:0 -1px 1px #24190de6,0 1px 0 #e5c79b4d;
+}
+.pirate-explore-copy>span{
+ display:block;max-width:100%;font:400 clamp(20px,1.9vw,27px)/1.5 Ringbearer,Georgia,serif;
+ letter-spacing:.015em;color:#e6c68e;
+ /* A shallow warm bevel, continuous side tone, and close contact shadow share the wood's lighting. */
+ text-shadow:0 -.5px 0 #f9dda78c,.5px .75px 0 #79552e,.8px 1.3px 0 #50351f,1px 2px 1.6px #1b140f99;
+}
+.pirate-explore-arrow{
+ justify-self:end;display:grid;place-items:center;width:38px;height:38px;border:1px solid #cbae6a66;border-radius:50%;
+ background:#211d142e;color:#ead29a;box-shadow:inset 0 1px 2px #17150f66;
+ transition:transform .22s cubic-bezier(.2,.7,.2,1);
+}
+.prologue-about-actions>.pirate-explore:not(:disabled):hover{
+ background:var(--pirate-plank-surface);transform:translateY(-2px);
+ box-shadow:inset 0 2px 1px #edcf9580,inset 0 -3px 3px #261b1499,
+  0 2px 0 #b09461,0 5px 0 #493323,0 7px 0 #28231b,0 18px 26px #0d151a80;
+}
+.pirate-explore:not(:disabled):hover .pirate-explore-arrow{transform:translate(2px,-2px)}
+.prologue-about-actions>.pirate-explore:not(:disabled):active{
+ transform:translateY(3px);box-shadow:inset 0 2px 1px #edcf954d,inset 0 -2px 3px #261b1499,0 2px 0 #493323,0 4px 8px #0d151a66;
+}
+.prologue-about-actions>.pirate-explore:focus-visible{outline:3px solid #f1d598;outline-offset:7px}
+@media(max-width:700px){
+ .prologue-about-actions>.pirate-explore{grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;min-height:82px;padding:16px}
+ .pirate-explore-compass{width:42px;height:42px}.pirate-explore-compass>svg{width:26px;height:26px}
+ .pirate-explore-copy>small{font-size:7px;letter-spacing:1.15px}
+ .pirate-explore-copy>span{font-size:clamp(13px,3.9vw,17px)}
+ .pirate-explore-arrow{width:32px;height:32px}.pirate-explore-arrow>svg{width:18px;height:18px}
+}
+@media(max-width:360px){
+ .prologue-about-actions>.pirate-explore{grid-template-columns:38px minmax(0,1fr) 38px;gap:8px;padding-inline:12px}
+ .pirate-explore-compass{width:36px;height:36px}.pirate-explore-compass>svg{width:23px;height:23px}
+ .pirate-explore-copy>small{letter-spacing:.75px}
+}
+@media(prefers-reduced-motion:reduce){
+ .prologue-about-actions>.pirate-explore,.pirate-explore-arrow{transition:none}
+ .prologue-about-actions>.pirate-explore:not(:disabled):hover,.prologue-about-actions>.pirate-explore:not(:disabled):active,
+ .pirate-explore:not(:disabled):hover .pirate-explore-arrow{transform:none}
+}
+@media(forced-colors:active){
+ .prologue-about-actions>.pirate-explore{background:ButtonFace;color:ButtonText;border:2px solid ButtonText;box-shadow:none;text-shadow:none}
+ .pirate-explore::before,.pirate-explore::after{display:none}
+ .pirate-explore-compass,.pirate-explore-arrow{background:ButtonFace;color:ButtonText;border-color:ButtonText;box-shadow:none}
+ .pirate-explore-copy>small,.pirate-explore-copy>span{color:ButtonText;text-shadow:none}
+}
+
+/* Small timber-and-brass language plaques echo the captain's cabin. */
+.prologue-about-copy>.prologue-languages{margin-top:23px;--copy-delay:.62s}
+.prologue-languages>p{margin:0 0 11px;font:500 9px/1.6 var(--sans);letter-spacing:1.8px;color:#d6c496}
+.prologue-languages>ul{display:flex;flex-wrap:wrap;gap:9px;margin:0;padding:0;list-style:none;max-width:600px}
+.prologue-languages li{
+ position:relative;display:flex;align-items:center;justify-content:center;min-width:52px;
+ padding:8px 16px;border:1px solid #b99a636e;border-radius:3px;
+ background:linear-gradient(180deg,#c9a46b12,transparent 50%,#181b152e),#35382be6;
+ color:#f0e1bc;font:500 13px/1.5 var(--sans);letter-spacing:.2px;
+ box-shadow:inset 0 1px 0 #e7cf9830,inset 0 -1px 0 #141c194d,0 3px 7px #111b1833;
+ text-shadow:0 1px 2px #161b17;
+}
+.prologue-languages li::before,.prologue-languages li::after{
+ content:'';position:absolute;top:50%;width:3px;height:3px;margin-top:-1.5px;border-radius:50%;
+ background:#c3a56d;box-shadow:0 1px 1px #131a16;
+}
+.prologue-languages li::before{left:6px}.prologue-languages li::after{right:6px}
+.prologue-about-copy>.prologue-about-actions{--copy-delay:.72s}
+@media(max-width:700px){
+ .prologue-about-copy>.prologue-languages{margin-top:21px}
+ .prologue-languages>p{font-size:8px;letter-spacing:1.5px}
+ .prologue-languages>ul{gap:8px}
+ .prologue-languages li{font-size:12px;padding:7px 14px;min-width:48px}
+}
+@media(forced-colors:active){
+ .prologue-languages>p{color:CanvasText}
+ .prologue-languages li{background:Canvas;color:CanvasText;border-color:CanvasText;box-shadow:none;text-shadow:none}
+ .prologue-languages li::before,.prologue-languages li::after{display:none}
+}

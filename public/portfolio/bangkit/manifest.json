@@ -1,0 +1,57 @@
+{
+  "project": "Bangkit",
+  "sourceTitle": "Jawa Pos SMA Awards 2021 - Cinematography - SMA Negeri 1 Madiun",
+  "sourceUrl": "https://www.youtube.com/watch?v=KTGtOQgDrOo",
+  "publisher": "SMAN 1 MADIUN",
+  "sourceDuration": 573,
+  "creditedRole": {
+    "name": "Iza Yunus Andhika",
+    "role": "Cameraman",
+    "source": "Publisher video description"
+  },
+  "thumbnailUrl": "https://i.ytimg.com/vi/KTGtOQgDrOo/maxresdefault.jpg",
+  "cover": "/portfolio/bangkit/cover.webp",
+  "encoding": "1280x720 H.264, yuv420p, AAC, faststart; original camera framing retained; brief audio boundary fades only.",
+  "clips": [
+    {
+      "id": "01-establishing-space",
+      "start": 15,
+      "end": 75,
+      "posterAt": 30,
+      "duration": 60,
+      "media": "/portfolio/bangkit/01-establishing-space.mp4",
+      "poster": "/portfolio/bangkit/01-establishing-space.webp",
+      "bytes": 14097477
+    },
+    {
+      "id": "02-dialogue-coverage",
+      "start": 180,
+      "end": 240,
+      "posterAt": 195,
+      "duration": 60,
+      "media": "/portfolio/bangkit/02-dialogue-coverage.mp4",
+      "poster": "/portfolio/bangkit/02-dialogue-coverage.webp",
+      "bytes": 9179509
+    },
+    {
+      "id": "03-character-and-details",
+      "start": 250,
+      "end": 310,
+      "posterAt": 255,
+      "duration": 60,
+      "media": "/portfolio/bangkit/03-character-and-details.mp4",
+      "poster": "/portfolio/bangkit/03-character-and-details.webp",
+      "bytes": 9327882
+    },
+    {
+      "id": "04-night-coverage",
+      "start": 395,
+      "end": 455,
+      "posterAt": 420,
+      "duration": 60,
+      "media": "/portfolio/bangkit/04-night-coverage.mp4",
+      "poster": "/portfolio/bangkit/04-night-coverage.webp",
+      "bytes": 14476031
+    }
+  ]
+}

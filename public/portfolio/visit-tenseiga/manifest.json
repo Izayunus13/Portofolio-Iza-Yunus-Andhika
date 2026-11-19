@@ -1,0 +1,31 @@
+{
+  "project": "Visit Tenseiga Clinic",
+  "sourceFilename": "Visit Tenseiga.mov",
+  "sourceBytes": 255610702,
+  "sourceDuration": 165.53,
+  "sourceDimensions": {
+    "width": 1080,
+    "height": 1920
+  },
+  "roles": [
+    "Cameraman",
+    "Concept Developer",
+    "Video Editor"
+  ],
+  "collaborator": {
+    "name": "@faisafch",
+    "role": "Influencer"
+  },
+  "creditSource": "Confirmed by the portfolio owner",
+  "purpose": "Promote Tenseiga_Clinic through a clinic-visit and treatment-process video",
+  "media": "/portfolio/visit-tenseiga/visit-tenseiga.mp4",
+  "poster": "/portfolio/visit-tenseiga/cover.webp",
+  "posterTime": 8,
+  "width": 720,
+  "height": 1280,
+  "duration": 165.53,
+  "hasAudio": true,
+  "bytes": 23420598,
+  "encoding": "H.264 yuv420p, 30fps, CRF 24, 1050k maxrate, 2100k buffer, AAC 96k, faststart.",
+  "framing": "Full source 9:16 frame and complete sequence preserved; no crop or stretch."
+}
